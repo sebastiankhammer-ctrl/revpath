@@ -1,0 +1,2268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RevPath — AI-Powered Sales Systems for Small Business</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:       #edeae0;
+      --cream-dark:  #e4e0d4;
+      --cream-light: #f5f3ed;
+      --white:       #faf9f6;
+      --ink:         #1a1a18;
+      --ink-muted:   #5a5a52;
+      --ink-light:   #9a9a90;
+      --rust:        #b5402a;
+      --gold:        #d4971e;
+      --border:      #d8d4c8;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--white);
+      color: var(--ink);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── UTILITY ── */
+    .inner { max-width: 1080px; margin: 0 auto; padding: 0 32px; }
+    .tag {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      display: block;
+      margin-bottom: 18px;
+    }
+    h2.title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(28px, 3.5vw, 44px);
+      font-weight: 600;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 20px;
+    }
+    .sub {
+      font-size: 17px;
+      color: var(--ink-muted);
+      line-height: 1.75;
+      max-width: 520px;
+    }
+    .btn-black {
+      display: inline-block;
+      background: var(--ink);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      padding: 13px 28px;
+      border-radius: 3px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.15s;
+    }
+    .btn-black:hover { opacity: 0.82; }
+    .btn-outline {
+      display: inline-block;
+      background: transparent;
+      color: var(--ink);
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 12px 28px;
+      border-radius: 3px;
+      border: 1.5px solid var(--border);
+      text-decoration: none;
+      cursor: pointer;
+      transition: border-color 0.15s, color 0.15s;
+    }
+    .btn-outline:hover { border-color: var(--ink); }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 32px;
+      height: 62px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--ink);
+      letter-spacing: -0.01em;
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--ink-muted);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: color 0.15s;
+    }
+    .nav-links a:hover { color: var(--ink); }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--cream);
+      padding: 100px 32px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 80px;
+      align-items: center;
+    }
+    .hero-eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--rust);
+      margin-bottom: 22px;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(38px, 5vw, 62px);
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: -0.025em;
+      color: var(--ink);
+      margin-bottom: 24px;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--rust);
+    }
+    .hero-desc {
+      font-size: 17px;
+      color: var(--ink-muted);
+      line-height: 1.75;
+      max-width: 480px;
+      margin-bottom: 40px;
+    }
+    .hero-ctas { display: flex; gap: 12px; align-items: center; margin-bottom: 56px; }
+    .hero-cta-note {
+      font-size: 12px;
+      color: var(--ink-light);
+      letter-spacing: 0.02em;
+    }
+    .hero-stats {
+      display: flex;
+      gap: 40px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+    }
+    .hero-stat .num {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 600;
+      color: var(--ink);
+      letter-spacing: -0.02em;
+    }
+    .hero-stat .lbl {
+      font-size: 12px;
+      color: var(--ink-muted);
+      margin-top: 3px;
+      line-height: 1.4;
+    }
+    /* Hero visual side */
+    .hero-visual {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .hero-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 22px 24px;
+    }
+    .hero-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 12px;
+    }
+    .hero-card-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+    }
+    .hero-card-badge {
+      font-size: 10px;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 2px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .badge-rust { background: #f5ece9; color: var(--rust); }
+    .badge-gold { background: #fdf5e6; color: var(--gold); }
+    .badge-green { background: #eaf5ee; color: #2e7d4f; }
+    .hero-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 19px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+    .hero-card p {
+      font-size: 13px;
+      color: var(--ink-muted);
+      line-height: 1.6;
+    }
+
+    /* ── PROBLEM ── */
+    .problem {
+      background: var(--white);
+      padding: 96px 32px;
+    }
+    .problem-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      margin-bottom: 64px;
+      align-items: end;
+    }
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+    .problem-card {
+      background: var(--white);
+      padding: 32px 28px;
+    }
+    .problem-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      font-weight: 400;
+      color: var(--cream-dark);
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+    .problem-card h3 {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+    .problem-card p { font-size: 13px; color: var(--ink-muted); line-height: 1.65; }
+    .problem-callout {
+      margin-top: 1px;
+      background: var(--ink);
+      padding: 36px 40px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 40px;
+      align-items: center;
+    }
+    .problem-callout p {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-style: italic;
+      color: var(--cream);
+      line-height: 1.6;
+    }
+
+    /* ── CREDIBILITY ── */
+    .cred {
+      background: var(--cream);
+      padding: 96px 32px;
+    }
+    .cred-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .cred-content h2 { margin-bottom: 22px; }
+    .cred-content p {
+      font-size: 16px;
+      color: var(--ink-muted);
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+    .cred-list {
+      margin-top: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .cred-list-item {
+      display: flex;
+      gap: 12px;
+      font-size: 14px;
+      color: var(--ink-muted);
+      line-height: 1.5;
+    }
+    .cred-list-item::before {
+      content: '—';
+      color: var(--rust);
+      flex-shrink: 0;
+      font-weight: 600;
+    }
+    .cred-visual {
+      background: var(--white);
+      border: 1px solid var(--border);
+      padding: 40px;
+      position: relative;
+    }
+    /* Decorative shape */
+    .deco-shape {
+      position: absolute;
+      top: -24px;
+      right: -24px;
+      width: 72px;
+      height: 72px;
+    }
+    .cred-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-style: italic;
+      color: var(--ink);
+      line-height: 1.6;
+      margin-bottom: 32px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--border);
+    }
+    .cred-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+    }
+    .cred-stat {
+      padding: 0 20px 0 0;
+      border-right: 1px solid var(--border);
+    }
+    .cred-stat:first-child { padding-left: 0; }
+    .cred-stat:last-child { border-right: none; padding-right: 0; padding-left: 20px; }
+    .cred-stat .num {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 600;
+      color: var(--ink);
+      letter-spacing: -0.02em;
+    }
+    .cred-stat .lbl { font-size: 12px; color: var(--ink-light); margin-top: 3px; }
+
+    /* ── SERVICES ── */
+    .services {
+      background: var(--white);
+      padding: 96px 32px;
+    }
+    .services-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      margin-bottom: 52px;
+      align-items: end;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+    .tier {
+      background: var(--white);
+      padding: 36px 32px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+    .tier.featured { background: var(--ink); }
+    .tier-tag {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      margin-bottom: 20px;
+    }
+    .tier.featured .tier-tag { color: #6a6a60; }
+    .tier-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 38px;
+      font-weight: 600;
+      color: var(--ink);
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .tier.featured .tier-price { color: var(--white); }
+    .tier-period {
+      font-size: 13px;
+      color: var(--ink-light);
+      margin-bottom: 6px;
+    }
+    .tier.featured .tier-period { color: #6a6a60; }
+    .tier-label {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink-muted);
+      margin-bottom: 28px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--border);
+    }
+    .tier.featured .tier-label { color: #9a9a90; border-bottom-color: #2e2e2a; }
+    .tier-items {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      margin-bottom: 28px;
+      flex: 1;
+    }
+    .tier-item {
+      display: flex;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--ink-muted);
+      line-height: 1.45;
+    }
+    .tier.featured .tier-item { color: #9a9a90; }
+    .tier-item-dash { color: var(--border); flex-shrink: 0; }
+    .tier.featured .tier-item-dash { color: #3a3a36; }
+    .tier-note {
+      font-size: 12px;
+      color: var(--ink-light);
+      font-style: italic;
+      line-height: 1.5;
+      padding-top: 18px;
+      border-top: 1px solid var(--border);
+      margin-bottom: 24px;
+    }
+    .tier.featured .tier-note { color: #5a5a52; border-top-color: #2e2e2a; }
+    .btn-tier-black {
+      display: block;
+      text-align: center;
+      background: var(--ink);
+      color: var(--white);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      padding: 12px;
+      border-radius: 3px;
+      text-decoration: none;
+      transition: opacity 0.15s;
+    }
+    .btn-tier-black:hover { opacity: 0.8; }
+    .btn-tier-white {
+      display: block;
+      text-align: center;
+      background: var(--white);
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      padding: 12px;
+      border-radius: 3px;
+      text-decoration: none;
+      transition: opacity 0.15s;
+    }
+    .btn-tier-white:hover { opacity: 0.85; }
+    .btn-tier-outline {
+      display: block;
+      text-align: center;
+      background: transparent;
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      padding: 11px;
+      border-radius: 3px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      transition: border-color 0.15s;
+    }
+    .btn-tier-outline:hover { border-color: var(--ink); }
+    .services-note {
+      margin-top: 1px;
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-top: none;
+      padding: 18px 28px;
+      font-size: 13px;
+      color: var(--ink-muted);
+      line-height: 1.6;
+    }
+
+    /* ── PROCESS ── */
+    .process {
+      background: var(--cream);
+      padding: 96px 32px;
+    }
+    .process-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      margin-bottom: 64px;
+      align-items: end;
+    }
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border: 1px solid var(--border);
+      background: var(--border);
+    }
+    .step {
+      background: var(--white);
+      padding: 32px 28px;
+    }
+    .step-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--rust);
+      letter-spacing: 0.08em;
+      margin-bottom: 24px;
+    }
+    .step h3 {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+    .step p { font-size: 13px; color: var(--ink-muted); line-height: 1.65; }
+
+    /* ── EMAIL CAPTURE ── */
+    .capture {
+      background: var(--ink);
+      padding: 96px 32px;
+    }
+    .capture-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .capture-content .tag { color: #6a6a60; }
+    .capture-content h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 3vw, 40px);
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: 18px;
+    }
+    .capture-content p {
+      font-size: 16px;
+      color: #9a9a90;
+      line-height: 1.75;
+    }
+    .capture-perks {
+      margin-top: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .capture-perk {
+      display: flex;
+      gap: 10px;
+      font-size: 13px;
+      color: #6a6a60;
+      line-height: 1.4;
+    }
+    .capture-perk::before { content: '–'; color: var(--rust); flex-shrink: 0; }
+    .capture-form-box {
+      background: #242420;
+      border: 1px solid #2e2e2a;
+      padding: 40px;
+      border-radius: 4px;
+    }
+    .capture-form-box h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .capture-form-box p {
+      font-size: 13px;
+      color: #6a6a60;
+      margin-bottom: 28px;
+      line-height: 1.5;
+    }
+    .form-group { margin-bottom: 14px; }
+    .form-group input {
+      width: 100%;
+      background: #1a1a18;
+      border: 1px solid #2e2e2a;
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      padding: 12px 16px;
+      border-radius: 3px;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    .form-group input::placeholder { color: #4a4a44; }
+    .form-group input:focus { border-color: #5a5a52; }
+    .btn-submit {
+      width: 100%;
+      background: var(--white);
+      color: var(--ink);
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 13px;
+      border-radius: 3px;
+      border: none;
+      cursor: pointer;
+      letter-spacing: 0.02em;
+      margin-top: 6px;
+      transition: opacity 0.15s;
+    }
+    .btn-submit:hover { opacity: 0.9; }
+    .form-note {
+      font-size: 11px;
+      color: #4a4a44;
+      text-align: center;
+      margin-top: 12px;
+      letter-spacing: 0.03em;
+    }
+
+    /* ── FINAL CTA ── */
+    .final {
+      background: var(--white);
+      padding: 120px 32px;
+      text-align: center;
+    }
+    .final-inner { max-width: 640px; margin: 0 auto; }
+    .final .tag { text-align: center; }
+    .final h2 { margin-bottom: 20px; text-align: center; max-width: none; }
+    .final p {
+      font-size: 17px;
+      color: var(--ink-muted);
+      line-height: 1.75;
+      margin-bottom: 44px;
+    }
+    .final-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .final-micro {
+      margin-top: 24px;
+      font-size: 12px;
+      color: var(--ink-light);
+      letter-spacing: 0.03em;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--cream);
+      border-top: 1px solid var(--border);
+      padding: 28px 32px;
+    }
+    .footer-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 15px;
+      color: var(--ink);
+      font-weight: 600;
+    }
+    footer p {
+      font-size: 12px;
+      color: var(--ink-light);
+    }
+    footer a { color: var(--ink-muted); text-decoration: none; }
+    footer a:hover { color: var(--ink); }
+
+    /* ── AI ADVANTAGE ── */
+    .ai-section {
+      background: var(--cream);
+      padding: 96px 32px;
+    }
+    .ai-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: end;
+      margin-bottom: 56px;
+    }
+    .ai-header h2 { margin-bottom: 0; }
+    .ai-banner {
+      background: var(--ink);
+      padding: 28px 36px;
+      margin-bottom: 1px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+    }
+    .ai-banner-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-style: italic;
+      color: var(--cream);
+      line-height: 1.5;
+    }
+    .ai-banner-text strong {
+      font-style: normal;
+      color: var(--white);
+    }
+    .ai-banner-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--rust);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .ai-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+    .ai-card {
+      background: var(--white);
+      padding: 28px;
+    }
+    .ai-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 16px;
+    }
+    .ai-saves {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #2e7d4f;
+      background: #eaf5ee;
+      padding: 3px 8px;
+      border-radius: 2px;
+    }
+    .ai-phase {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+    }
+    .ai-card h3 {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+    .ai-card .ai-you {
+      font-size: 13px;
+      color: var(--ink-muted);
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+    .ai-card .ai-output {
+      font-size: 12px;
+      color: var(--ink-light);
+      font-style: italic;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+    }
+    .ai-card .ai-output strong { color: #2e7d4f; font-style: normal; }
+    .ai-bottom-callout {
+      margin-top: 1px;
+      background: var(--rust);
+      padding: 24px 36px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+    }
+    .ai-bottom-callout p {
+      font-size: 15px;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.6;
+      max-width: 640px;
+    }
+    .ai-bottom-callout p strong { color: white; }
+
+    /* ── RESOURCES ── */
+    .resources {
+      background: var(--white);
+      padding: 96px 32px;
+    }
+    .resources-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: end;
+      margin-bottom: 56px;
+    }
+    .resources-header h2 { margin-bottom: 0; }
+
+    /* Tool stack */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      margin-bottom: 1px;
+    }
+    .tool-category {
+      background: var(--white);
+      padding: 24px;
+    }
+    .tool-category-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+    .tool-list { display: flex; flex-direction: column; gap: 8px; }
+    .tool-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--ink-muted);
+    }
+    .tool-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--border);
+      flex-shrink: 0;
+    }
+    .tool-item.featured .tool-dot { background: var(--rust); }
+    .tool-item.featured { color: var(--ink); font-weight: 500; }
+
+    /* Prompts accordion */
+    .prompts-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 28px;
+      background: var(--cream);
+      border: 1px solid var(--border);
+      margin-top: 32px;
+      margin-bottom: 1px;
+    }
+    .prompts-header h3 {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--ink);
+    }
+    .prompts-header p {
+      font-size: 13px;
+      color: var(--ink-muted);
+      margin-top: 2px;
+    }
+    .prompts-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #2e7d4f;
+      background: #eaf5ee;
+      padding: 4px 10px;
+      border-radius: 2px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .prompts-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-top: none;
+    }
+    .prompt-item { background: var(--white); }
+    .prompt-trigger {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 24px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      gap: 16px;
+      transition: background 0.12s;
+    }
+    .prompt-trigger:hover { background: var(--cream-light); }
+    .prompt-trigger-left { display: flex; gap: 14px; align-items: center; }
+    .prompt-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 13px;
+      color: var(--ink-light);
+      width: 24px;
+      flex-shrink: 0;
+    }
+    .prompt-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--ink);
+    }
+    .prompt-saves {
+      font-size: 11px;
+      color: #2e7d4f;
+      font-weight: 500;
+    }
+    .prompt-arrow {
+      font-size: 16px;
+      color: var(--ink-light);
+      transition: transform 0.2s;
+      flex-shrink: 0;
+    }
+    .prompt-item.open .prompt-arrow { transform: rotate(180deg); }
+    .prompt-body {
+      display: none;
+      padding: 0 24px 24px 62px;
+      border-top: 1px solid var(--border);
+    }
+    .prompt-item.open .prompt-body { display: block; }
+    .prompt-context {
+      font-size: 13px;
+      color: var(--ink-muted);
+      margin-bottom: 14px;
+      margin-top: 16px;
+      line-height: 1.6;
+    }
+    .prompt-box {
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 16px 18px;
+      font-size: 13px;
+      color: var(--ink);
+      line-height: 1.7;
+      font-style: italic;
+      position: relative;
+    }
+    .prompt-copy-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      color: var(--ink-muted);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      padding: 4px 10px;
+      border-radius: 2px;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      transition: all 0.15s;
+    }
+    .prompt-copy-btn:hover { background: var(--ink); color: var(--white); border-color: var(--ink); }
+    .prompt-output {
+      margin-top: 10px;
+      font-size: 12px;
+      color: var(--ink-light);
+      font-style: normal;
+    }
+    .prompt-output strong { color: #2e7d4f; }
+
+    /* Prompt category tabs */
+    .prompts-tabs {
+      display: flex;
+      overflow-x: auto;
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-bottom: none;
+      margin-top: 32px;
+    }
+    .prompts-tab {
+      padding: 13px 18px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: var(--ink-muted);
+      border: none;
+      background: none;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      white-space: nowrap;
+      font-family: 'Inter', sans-serif;
+      transition: all 0.15s;
+    }
+    .prompts-tab:hover { color: var(--ink); }
+    .prompts-tab.active { color: var(--ink); border-bottom-color: var(--rust); background: var(--white); }
+    .prompt-cat-tag {
+      display: inline-block;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      background: var(--cream);
+      padding: 2px 7px;
+      border-radius: 2px;
+      margin-left: 10px;
+      vertical-align: middle;
+    }
+
+    /* Bottom callout */
+    .resources-callout {
+      margin-top: 1px;
+      background: var(--ink);
+      border: 1px solid var(--ink);
+      padding: 32px 40px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 40px;
+      align-items: center;
+    }
+    .resources-callout p {
+      font-family: 'Playfair Display', serif;
+      font-size: 19px;
+      font-style: italic;
+      color: var(--cream);
+      line-height: 1.6;
+    }
+    .resources-callout p strong { color: white; font-style: normal; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-visual { display: none; }
+      .problem-header { grid-template-columns: 1fr; gap: 24px; }
+      .problem-grid { grid-template-columns: 1fr 1fr; }
+      .cred-inner { grid-template-columns: 1fr; }
+      .ai-header { grid-template-columns: 1fr; gap: 24px; }
+      .ai-grid { grid-template-columns: 1fr 1fr; }
+      .ai-banner { flex-direction: column; gap: 16px; align-items: flex-start; }
+      .ai-bottom-callout { flex-direction: column; align-items: flex-start; gap: 20px; }
+      .tools-grid { grid-template-columns: 1fr 1fr; }
+      .resources-header { grid-template-columns: 1fr; gap: 24px; }
+      .resources-callout { grid-template-columns: 1fr; }
+      .services-header { grid-template-columns: 1fr; gap: 24px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .process-header { grid-template-columns: 1fr; gap: 24px; }
+      .process-steps { grid-template-columns: 1fr 1fr; }
+      .capture-inner { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 580px) {
+      .nav-links { display: none; }
+      .problem-grid { grid-template-columns: 1fr; }
+      .process-steps { grid-template-columns: 1fr; }
+      .hero { padding: 64px 20px 56px; }
+      .inner, .hero-inner { padding: 0 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo">RevPath</a>
+    <ul class="nav-links">
+      <li><a href="#problem">The Problem</a></li>
+      <li><a href="#ai-advantage">AI Advantage</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#resources">Resources</a></li>
+    </ul>
+    <a href="#your-calendly-link" class="btn-black">Book a Free Call</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-eyebrow">RevPath · AI-Powered Sales Infrastructure</div>
+      <h1>Your competitors<br>aren't using AI.<br><em>You will.</em></h1>
+      <p class="hero-desc">RevPath builds AI-powered sales systems for small businesses and creators — combining enterprise process with the unfair advantage of modern AI. The result: more pipeline, less manual work, and a sales operation your competitors can't match.</p>
+      <div class="hero-ctas">
+        <a href="#your-calendly-link" class="btn-black">Book a Free 20-Min Audit</a>
+        <a href="#services" class="btn-outline">See Pricing</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="num">30–40%</div>
+          <div class="lbl">of leads lost to<br>poor follow-up</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num">30 days</div>
+          <div class="lbl">to a fully operational<br>sales system</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num">$80K+</div>
+          <div class="lbl">saved vs. a full-time<br>sales manager</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card">
+        <div class="hero-card-top">
+          <div class="hero-card-label">Pipeline Health</div>
+          <span class="hero-card-badge badge-rust">Needs Work</span>
+        </div>
+        <h3>Leaking Revenue</h3>
+        <p>Leads coming in, nothing following up. No CRM, no cadence, no system.</p>
+      </div>
+      <div class="hero-card">
+        <div class="hero-card-top">
+          <div class="hero-card-label">After 30 Days</div>
+          <span class="hero-card-badge badge-green">Live</span>
+        </div>
+        <h3>System Running</h3>
+        <p>CRM configured. Outbound sequence active. Pipeline fully visible and tracked.</p>
+      </div>
+      <div class="hero-card">
+        <div class="hero-card-top">
+          <div class="hero-card-label">The AI Advantage</div>
+          <span class="hero-card-badge badge-gold">Unfair edge</span>
+        </div>
+        <h3>AI Does the Heavy Lifting</h3>
+        <p>Lead research, outreach drafting, audit reports, playbooks — AI handles 70% of the work in a fraction of the time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="problem" id="problem">
+  <div class="inner">
+    <div class="problem-header">
+      <div>
+        <span class="tag">The Problem</span>
+        <h2 class="title">Why good businesses stall at the same revenue ceiling</h2>
+      </div>
+      <p class="sub">Most small business owners are skilled at their craft — and completely under-equipped to sell. The gap isn't talent. It's infrastructure. That's what RevPath fixes.</p>
+    </div>
+    <div class="problem-grid">
+      <div class="problem-card">
+        <div class="problem-num">01</div>
+        <h3>Leaking Pipeline</h3>
+        <p>Leads come in but never get followed up systematically. No CRM, no cadence, no close.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-num">02</div>
+        <h3>No Outbound Motion</h3>
+        <p>You wait for inbound. No cold outreach, no list, no sequence. Growth is accidental — not engineered.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-num">03</div>
+        <h3>Tools Without Strategy</h3>
+        <p>You have HubSpot or GoHighLevel set up wrong — or not at all. Paying for software that isn't working.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-num">04</div>
+        <h3>No Repeatable Process</h3>
+        <p>Every sales conversation is improvised. No framework, no objection handling, no follow-up plan.</p>
+      </div>
+    </div>
+    <div class="problem-callout">
+      <p>"This isn't a marketing problem — it's a sales infrastructure problem. RevPath was built specifically to solve it — using the same systems that work at the enterprise level."</p>
+      <a href="#your-calendly-link" class="btn-outline" style="color:var(--cream); border-color: rgba(255,255,255,0.2); white-space:nowrap; flex-shrink:0;">Book Free Audit</a>
+    </div>
+  </div>
+</section>
+
+<!-- CREDIBILITY -->
+<section class="cred" id="about">
+  <div class="inner">
+    <div class="cred-inner">
+      <div class="cred-content">
+        <span class="tag">Why It Works</span>
+        <h2 class="title">Enterprise experience.<br>Small business price.</h2>
+        <p>RevPath isn't competing with other consultants. It's the alternative to hiring a full-time sales manager at $80K+/year — or a marketing agency that doesn't understand sales.</p>
+        <p>The same pipeline infrastructure, outbound sequences, and CRM architecture that enterprise teams run on — now supercharged with AI tools that make the whole system faster, smarter, and more personalised than anything your competitors are running.</p>
+        <div class="cred-list">
+          <div class="cred-list-item">Enterprise sales background in SaaS, B2B, and services</div>
+          <div class="cred-list-item">Outbound systems built to generate significant pipeline at scale</div>
+          <div class="cred-list-item">Deep expertise in HubSpot, GoHighLevel, and Pipedrive</div>
+          <div class="cred-list-item">AI-fluent — every deliverable is built with modern AI tooling</div>
+          <div class="cred-list-item">Built for founders, coaches, e-commerce brands, and service businesses</div>
+        </div>
+      </div>
+      <div class="cred-visual">
+        <!-- Decorative shape: rust circle -->
+        <svg class="deco-shape" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="36" cy="36" r="36" fill="#b5402a" opacity="0.12"/>
+          <circle cx="36" cy="36" r="22" fill="#b5402a" opacity="0.18"/>
+        </svg>
+        <p class="cred-quote">"Years spent building outbound pipelines that generated millions in revenue at enterprise scale. RevPath brings that same infrastructure to small businesses — at a fraction of the cost."</p>
+        <div class="cred-stats">
+          <div class="cred-stat">
+            <div class="num">$1–5K</div>
+            <div class="lbl">Monthly investment</div>
+          </div>
+          <div class="cred-stat" style="padding-left:20px;">
+            <div class="num">30 days</div>
+            <div class="lbl">To full launch</div>
+          </div>
+          <div class="cred-stat">
+            <div class="num">3 tiers</div>
+            <div class="lbl">For every stage</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AI ADVANTAGE -->
+<section class="ai-section" id="ai-advantage">
+  <div class="inner">
+    <div class="ai-header">
+      <div>
+        <span class="tag">The AI Advantage</span>
+        <h2 class="title">Bringing a gun to a<br><em>bareknuckle fight</em></h2>
+      </div>
+      <p class="sub">Most of your competitors are still doing sales the slow way — manual research, generic outreach, guesswork. We use AI to run circles around them. Same results, a fraction of the time.</p>
+    </div>
+    <div class="ai-banner">
+      <div class="ai-banner-text">"Businesses that don't adopt AI-powered sales processes in the next 24 months won't be losing ground slowly. They'll be <strong>left behind entirely</strong>."</div>
+      <div class="ai-banner-tag">The shift is now</div>
+    </div>
+    <div class="ai-grid">
+      <div class="ai-card">
+        <div class="ai-card-top">
+          <div class="ai-phase">Lead Research</div>
+          <span class="ai-saves">Saves ~2 hrs/week</span>
+        </div>
+        <h3>Know Your Prospect Before Hello</h3>
+        <p class="ai-you">AI researches each target — their business, audience, and likely sales gaps — in under 60 seconds. What took an hour now takes a minute.</p>
+        <div class="ai-output"><strong>Output:</strong> Personalised outreach brief, ready to use</div>
+      </div>
+      <div class="ai-card">
+        <div class="ai-card-top">
+          <div class="ai-phase">Outreach</div>
+          <span class="ai-saves">Saves ~3 hrs/week</span>
+        </div>
+        <h3>10 Personalised DMs in 10 Minutes</h3>
+        <p class="ai-you">AI drafts hyper-personalised cold messages tailored to each prospect. You review, tweak, and send — while competitors are still staring at a blank page.</p>
+        <div class="ai-output"><strong>Output:</strong> Personalised outreach at scale, zero burn-out</div>
+      </div>
+      <div class="ai-card">
+        <div class="ai-card-top">
+          <div class="ai-phase">Sales Audits</div>
+          <span class="ai-saves">Saves ~1.5 hrs/client</span>
+        </div>
+        <h3>Professional Audit in Minutes</h3>
+        <p class="ai-you">Discovery call notes go in. A polished executive audit report — top 3 revenue leaks, prioritised fixes — comes out. Ready to send same day.</p>
+        <div class="ai-output"><strong>Output:</strong> Audit doc that impresses from the first touchpoint</div>
+      </div>
+      <div class="ai-card">
+        <div class="ai-card-top">
+          <div class="ai-phase">CRM Setup</div>
+          <span class="ai-saves">Saves ~4 hrs/client</span>
+        </div>
+        <h3>Full CRM Logic, Zero Guesswork</h3>
+        <p class="ai-you">AI generates complete CRM setup guides — pipeline stages, deal properties, automation logic — for HubSpot, GoHighLevel, or Pipedrive. Ready to implement immediately.</p>
+        <div class="ai-output"><strong>Output:</strong> Full setup guide and automation blueprint</div>
+      </div>
+      <div class="ai-card">
+        <div class="ai-card-top">
+          <div class="ai-phase">Sales Playbook</div>
+          <span class="ai-saves">Saves ~5 hrs/client</span>
+        </div>
+        <h3>10-Page Playbook, Not 10 Days</h3>
+        <p class="ai-you">ICP definition, discovery framework, top objections with responses, follow-up sequences — AI drafts the full playbook. You add the insight. Done in hours, not weeks.</p>
+        <div class="ai-output"><strong>Output:</strong> A sales playbook your team can use from day one</div>
+      </div>
+      <div class="ai-card">
+        <div class="ai-card-top">
+          <div class="ai-phase">Reporting</div>
+          <span class="ai-saves">Saves ~1.5 hrs/client</span>
+        </div>
+        <h3>Monthly Reports That Actually Say Something</h3>
+        <p class="ai-you">Pipeline data in, executive summary out. What worked, what didn't, 3 priorities for next month — formatted and client-ready in minutes.</p>
+        <div class="ai-output"><strong>Output:</strong> Reports that build trust and retention</div>
+      </div>
+    </div>
+    <div class="ai-bottom-callout">
+      <p>AI doesn't replace the strategy, the relationships, or the judgment. It removes the <strong>blank-page problem</strong> — so you spend your time on what actually moves the needle. Your competitors are still doing it the hard way.</p>
+      <a href="#your-calendly-link" class="btn-black" style="flex-shrink:0;">Book Free Audit</a>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="inner">
+    <div class="services-header">
+      <div>
+        <span class="tag">Services &amp; Pricing</span>
+        <h2 class="title">Pick the tier that matches your stage</h2>
+      </div>
+      <p class="sub">Every tier includes AI-powered delivery — faster builds, sharper outputs, better results. Most clients start with Starter and upgrade within 60 days.</p>
+    </div>
+    <div class="services-grid">
+
+      <!-- Starter -->
+      <div class="tier">
+        <div class="tier-tag">Starter</div>
+        <div class="tier-price">$997</div>
+        <div class="tier-period">One-time</div>
+        <div class="tier-label">Sales System Audit + Roadmap</div>
+        <div class="tier-items">
+          <div class="tier-item"><span class="tier-item-dash">–</span>90-min deep-dive discovery call</div>
+          <div class="tier-item"><span class="tier-item-dash">–</span>Full audit of your current sales process</div>
+          <div class="tier-item"><span class="tier-item-dash">–</span>Identify top 3 revenue leaks</div>
+          <div class="tier-item"><span class="tier-item-dash">–</span>Custom roadmap with prioritised fixes</div>
+          <div class="tier-item"><span class="tier-item-dash">–</span>Email follow-up with templates</div>
+          <div class="tier-item"><span class="tier-item-dash">–</span>30-day async Slack/email support</div>
+        </div>
+        <div class="tier-note">Great door-opener. Upsells naturally to Done-For-You.</div>
+        <a href="#your-calendly-link" class="btn-tier-outline">Get Started</a>
+      </div>
+
+      <!-- Growth (featured) -->
+      <div class="tier featured">
+        <div class="tier-tag">Growth · Most Popular</div>
+        <div class="tier-price">$2,500</div>
+        <div class="tier-period">Per month</div>
+        <div class="tier-label">Done-For-You Sales System</div>
+        <div class="tier-items">
+          <div class="tier-item"><span class="tier-item-dash">–</span>Everything in Starter</div>
+          <div class="tier-item"><span class="tier-item-dash">–</span>CRM setup &amp; full configuration</div>
+          <div class="tier-item"><span class="tier-item-dash">–</span>AI-written 3-step outbound sequence, loaded &amp; live</div>
+          <div class="tier-item"><span class="tier-item-dash">–</span>AI-assisted lead list building — 250 contacts/month</div>
+          <div class="tier-item"><span class="tier-item-dash">–</span>Weekly pipeline review call (30 min)</div>
+          <div class="tier-item"><span class="tier-item-dash">–</span>Objection handling scripts</div>
+          <div class="tier-item"><span class="tier-item-dash">–</span>AI-generated monthly performance report</div>
+        </div>
+        <div class="tier-note">Core offer. 3 clients = $7,500/mo. Minimum 2-month engagement.</div>
+        <a href="#your-calendly-link" class="btn-tier-white">Book a Call →</a>
+      </div>
+
+      <!-- Scale -->
+      <div class="tier">
+        <div class="tier-tag">Scale</div>
+        <div class="tier-price">$5,000</div>
+        <div class="tier-period">Per month</div>
+        <div class="tier-label">Fractional Sales Manager</div>
+        <div class="tier-items">
+          <div class="tier-item"><span class="tier-item-dash">–</span>Everything in Growth</div>
+          <div class="tier-item"><span class="tier-item-dash">–</span>Hiring &amp; onboarding your first sales rep</div>
+          <div class="tier-item"><span class="tier-item-dash">–</span>Full sales playbook creation</div>
+          <div class="tier-item"><span class="tier-item-dash">–</span>Weekly team coaching (1 hour)</div>
+          <div class="tier-item"><span class="tier-item-dash">–</span>KPI dashboard + reporting</div>
+          <div class="tier-item"><span class="tier-item-dash">–</span>Quarterly strategy session</div>
+          <div class="tier-item"><span class="tier-item-dash">–</span>Slack access — same-day response</div>
+        </div>
+        <div class="tier-note">For clients ready to build a team. You become a strategic partner.</div>
+        <a href="#your-calendly-link" class="btn-tier-outline">Book a Call</a>
+      </div>
+
+    </div>
+    <div class="services-note">
+      ⚠ These are US/UK market rates. If you're at an earlier stage, reach out — I adjust scope, never price.
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <div class="inner">
+    <div class="process-header">
+      <div>
+        <span class="tag">How It Works</span>
+        <h2 class="title">From zero to a working sales system in 30 days</h2>
+      </div>
+      <p class="sub">No lengthy onboarding. No endless discovery calls. AI tools compress the build timeline — we move fast and ship things that work from day one.</p>
+    </div>
+    <div class="process-steps">
+      <div class="step">
+        <div class="step-num">Step 01</div>
+        <h3>Free Audit Call</h3>
+        <p>20 minutes. We'll identify your top 3 revenue leaks and give you a clear action plan — no pitch, no obligation.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">Step 02</div>
+        <h3>Custom Roadmap</h3>
+        <p>You receive a tailored plan: CRM setup, outbound sequence, and pipeline structure — scoped to your business.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">Step 03</div>
+        <h3>Build &amp; Launch</h3>
+        <p>AI tools compress the build. CRM configured, AI-written sequences live, lead list built — fully operational in 30 days.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">Step 04</div>
+        <h3>Ongoing Optimisation</h3>
+        <p>Weekly check-ins, performance reports, and continuous iteration until your pipeline runs on its own.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESOURCES & TOOLS -->
+<section class="resources" id="resources">
+  <div class="inner">
+    <div class="resources-header">
+      <div>
+        <span class="tag">Resources &amp; Tools</span>
+        <h2 class="title">The full toolkit.<br><em>No strings attached.</em></h2>
+      </div>
+      <p class="sub">Here's exactly what we use, how we use it, and the AI prompts behind every deliverable. The information is free. What most people find is that <em>knowing</em> isn't the hard part.</p>
+    </div>
+
+    <!-- Tool Stack -->
+    <div class="tools-grid">
+      <div class="tool-category">
+        <div class="tool-category-label">CRM</div>
+        <div class="tool-list">
+          <div class="tool-item featured"><span class="tool-dot"></span>HubSpot</div>
+          <div class="tool-item featured"><span class="tool-dot"></span>GoHighLevel</div>
+          <div class="tool-item featured"><span class="tool-dot"></span>Pipedrive</div>
+          <div class="tool-item"><span class="tool-dot"></span>Notion (light)</div>
+          <div class="tool-item"><span class="tool-dot"></span>Airtable (light)</div>
+        </div>
+      </div>
+      <div class="tool-category">
+        <div class="tool-category-label">Lead Generation</div>
+        <div class="tool-list">
+          <div class="tool-item featured"><span class="tool-dot"></span>Apollo.io</div>
+          <div class="tool-item featured"><span class="tool-dot"></span>Clay</div>
+          <div class="tool-item featured"><span class="tool-dot"></span>LinkedIn Sales Nav</div>
+          <div class="tool-item"><span class="tool-dot"></span>Hunter.io</div>
+          <div class="tool-item"><span class="tool-dot"></span>Lusha</div>
+        </div>
+      </div>
+      <div class="tool-category">
+        <div class="tool-category-label">Outreach &amp; Sequencing</div>
+        <div class="tool-list">
+          <div class="tool-item featured"><span class="tool-dot"></span>Instantly</div>
+          <div class="tool-item featured"><span class="tool-dot"></span>Lemlist</div>
+          <div class="tool-item featured"><span class="tool-dot"></span>Apollo Sequences</div>
+          <div class="tool-item"><span class="tool-dot"></span>Smartlead</div>
+          <div class="tool-item"><span class="tool-dot"></span>Mailshake</div>
+        </div>
+      </div>
+      <div class="tool-category">
+        <div class="tool-category-label">AI &amp; Automation</div>
+        <div class="tool-list">
+          <div class="tool-item featured"><span class="tool-dot"></span>ChatGPT / Claude</div>
+          <div class="tool-item featured"><span class="tool-dot"></span>Make (Integromat)</div>
+          <div class="tool-item featured"><span class="tool-dot"></span>Zapier</div>
+          <div class="tool-item"><span class="tool-dot"></span>n8n</div>
+          <div class="tool-item"><span class="tool-dot"></span>Perplexity (research)</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AI Prompt Library -->
+    <div class="prompts-header">
+      <div>
+        <h3>AI Prompt Library</h3>
+        <p>30 prompts covering every function a sales manager handles — copy and use them yourself.</p>
+      </div>
+      <span class="prompts-tag">Free to use</span>
+    </div>
+    <div class="prompts-tabs">
+      <button class="prompts-tab active" onclick="filterPrompts('all', this)">All (30)</button>
+      <button class="prompts-tab" onclick="filterPrompts('outbound', this)">Outbound</button>
+      <button class="prompts-tab" onclick="filterPrompts('forecasting', this)">Forecasting</button>
+      <button class="prompts-tab" onclick="filterPrompts('coaching', this)">Coaching</button>
+      <button class="prompts-tab" onclick="filterPrompts('recruiting', this)">Recruiting</button>
+      <button class="prompts-tab" onclick="filterPrompts('comp', this)">Comp &amp; RevOps</button>
+      <button class="prompts-tab" onclick="filterPrompts('performance', this)">Performance</button>
+      <button class="prompts-tab" onclick="filterPrompts('operations', this)">Operations</button>
+    </div>
+    <div class="prompts-list">
+
+      <!-- OUTBOUND -->
+      <div class="prompt-item" data-category="outbound">
+        <button class="prompt-trigger" onclick="togglePrompt(this)">
+          <div class="prompt-trigger-left">
+            <span class="prompt-num">01</span>
+            <div>
+              <div class="prompt-title">Lead Research<span class="prompt-cat-tag">Outbound</span></div>
+              <div class="prompt-saves">Saves ~2 hrs/week</div>
+            </div>
+          </div>
+          <span class="prompt-arrow">↓</span>
+        </button>
+        <div class="prompt-body">
+          <p class="prompt-context">Run before any outreach. Replace bracketed fields with the actual target. Works best in ChatGPT-4o or Claude.</p>
+          <div class="prompt-box">
+            <button class="prompt-copy-btn" onclick="copyPrompt(this)">Copy</button>
+            "Research [business name]. Summarise what they sell, who their audience is, their likely revenue range, and identify 3 probable gaps in their sales process based on a typical [niche] business at their stage. Format as a brief to use before cold outreach."
+          </div>
+          <p class="prompt-output"><strong>Output:</strong> Personalised outreach brief in under 60 seconds</p>
+        </div>
+      </div>
+
+      <div class="prompt-item" data-category="outbound">
+        <button class="prompt-trigger" onclick="togglePrompt(this)">
+          <div class="prompt-trigger-left">
+            <span class="prompt-num">02</span>
+            <div>
+              <div class="prompt-title">Cold Outreach Personalisation<span class="prompt-cat-tag">Outbound</span></div>
+              <div class="prompt-saves">Saves ~3 hrs/week</div>
+            </div>
+          </div>
+          <span class="prompt-arrow">↓</span>
+        </button>
+        <div class="prompt-body">
+          <p class="prompt-context">Use after the research prompt. Paste in the brief as context. Produces a DM or cold email ready to review and send.</p>
+          <div class="prompt-box">
+            <button class="prompt-copy-btn" onclick="copyPrompt(this)">Copy</button>
+            "Write a cold DM for a [coach / founder / e-commerce owner] named [Name] who [specific detail from research]. Position me as a sales systems consultant who helps small businesses fix their pipeline. Keep it under 100 words. End with a single low-commitment question — not a pitch. Tone: direct, warm, peer-to-peer."
+          </div>
+          <p class="prompt-output"><strong>Output:</strong> 10 personalised DMs drafted in under 10 minutes</p>
+        </div>
+      </div>
+
+      <div class="prompt-item" data-category="outbound">
+        <button class="prompt-trigger" onclick="togglePrompt(this)">
+          <div class="prompt-trigger-left">
+            <span class="prompt-num">03</span>
+            <div>
+              <div class="prompt-title">Sales Audit Report<span class="prompt-cat-tag">Outbound</span></div>
+              <div class="prompt-saves">Saves ~1.5 hrs/client</div>
+            </div>
+          </div>
+          <span class="prompt-arrow">↓</span>
+        </button>
+        <div class="prompt-body">
+          <p class="prompt-context">Run immediately after a discovery call. Paste raw notes in. The AI produces a polished audit to send the same day.</p>
+          <div class="prompt-box">
+            <button class="prompt-copy-btn" onclick="copyPrompt(this)">Copy</button>
+            "Based on these notes from a discovery call with a [business type]: [paste notes]. Generate a sales audit report identifying their top 3 revenue leaks and recommended fixes. Format as an executive summary — one paragraph overview, three numbered findings each with a recommended action, and a one-paragraph next steps section."
+          </div>
+          <p class="prompt-output"><strong>Output:</strong> Polished audit document ready to send same day</p>
+        </div>
+      </div>
+
+      <div class="prompt-item" data-category="outbound">
+        <button class="prompt-trigger" onclick="togglePrompt(this)">
+          <div class="prompt-trigger-left">
+            <span class="prompt-num">04</span>
+            <div>
+              <div class="prompt-title">CRM Setup Guide<span class="prompt-cat-tag">Outbound</span></div>
+              <div class="prompt-saves">Saves ~4 hrs/client</div>
+            </div>
+          </div>
+          <span class="prompt-arrow">↓</span>
+        </button>
+        <div class="prompt-body">
+          <p class="prompt-context">Generates the full configuration blueprint. QA the logic and customise to the client's specific tool and niche.</p>
+          <div class="prompt-box">
+            <button class="prompt-copy-btn" onclick="copyPrompt(this)">Copy</button>
+            "Create a step-by-step CRM setup guide for a [HubSpot / GoHighLevel / Pipedrive] implementation for a [business type]. Include: recommended pipeline stages with entry and exit criteria, essential deal properties to track, a 5-step email automation sequence for new leads, and a weekly pipeline review checklist."
+          </div>
+          <p class="prompt-output"><strong>Output:</strong> Complete CRM blueprint and automation logic</p>
+        </div>
+      </div>
+
+      <div class="prompt-item" data-category="outbound">
+        <button class="prompt-trigger" onclick="togglePrompt(this)">
+          <div class="prompt-trigger-left">
+            <span class="prompt-num">05</span>
+            <div>
+              <div class="prompt-title">Sales Playbook<span class="prompt-cat-tag">Outbound</span></div>
+              <div class="prompt-saves">Saves ~5 hrs/client</div>
+            </div>
+          </div>
+          <span class="prompt-arrow">↓</span>
+        </button>
+        <div class="prompt-body">
+          <p class="prompt-context">Use after interviewing the client about their offer, ICP, and objections. AI drafts — then inject their specific language and examples.</p>
+          <div class="prompt-box">
+            <button class="prompt-copy-btn" onclick="copyPrompt(this)">Copy</button>
+            "Create a sales playbook for a [business type] that sells [offer] to [ICP]. Include: ICP definition with psychographic and firmographic attributes, a discovery call framework (5 key questions), the top 5 objections with word-for-word responses, a 4-step follow-up sequence template, and a one-page close checklist."
+          </div>
+          <p class="prompt-output"><strong>Output:</strong> 10–15 page playbook draft ready to use immediately</p>
+        </div>
+      </div>
+
+      <div class="prompt-item" data-category="outbound">
+        <button class="prompt-trigger" onclick="togglePrompt(this)">
+          <div class="prompt-trigger-left">
+            <span class="prompt-num">06</span>
+            <div>
+              <div class="prompt-title">Monthly Performance Report<span class="prompt-cat-tag">Outbound</span></div>
+              <div class="prompt-saves">Saves ~1.5 hrs/client</div>
+            </div>
+          </div>
+          <span class="prompt-arrow">↓</span>
+        </button>
+        <div class="prompt-body">
+          <p class="prompt-context">Fill in the actual numbers first. AI turns raw pipeline data into a client-ready narrative. Always verify insights before sending.</p>
+          <div class="prompt-box">
+            <button class="prompt-copy-btn" onclick="copyPrompt(this)">Copy</button>
+            "Here are this month's pipeline metrics for my client: [paste data — leads generated, emails sent, reply rate, calls booked, deals closed, revenue]. Write a 1-page executive summary: What Worked (2–3 observations), What Didn't (1–2 honest findings), and 3 Recommended Priorities for next month. Tone: direct, data-led, no fluff."
+          </div>
+          <p class="prompt-output"><strong>Output:</strong> Client-ready report that builds trust and retention</p>
+        </div>
+      </div>
+
+      <!-- FORECASTING -->
+      <div class="prompt-item" data-category="forecasting">
+        <button class="prompt-trigger" onclick="togglePrompt(this)">
+          <div class="prompt-trigger-left">
+            <span class="prompt-num">07</span>
+            <div>
+              <div class="prompt-title">90-Day Revenue Forecast<span class="prompt-cat-tag">Forecasting</span></div>
+              <div class="prompt-saves">Saves ~2 hrs/month</div>
+            </div>
+          </div>
+          <span class="prompt-arrow">↓</span>
+        </button>
+        <div class="prompt-body">
+          <p class="prompt-context">Paste in current pipeline data. Get three scenario forecasts instantly instead of building a spreadsheet from scratch.</p>
+          <div class="prompt-box">
+            <button class="prompt-copy-btn" onclick="copyPrompt(this)">Copy</button>
+            "Create a 90-day revenue forecast for a [business type] with this pipeline data: [paste pipeline — deal names, values, stages, expected close dates]. Build three scenarios: best case (all active deals close on time), base case (deals weighted by stage probability), worst case (only late-stage deals close). Present as a table with a brief commentary on key assumptions."
+          </div>
+          <p class="prompt-output"><strong>Output:</strong> Three-scenario forecast table ready to present</p>
+        </div>
+      </div>
+
+      <div class="prompt-item" data-category="forecasting">
+        <button class="prompt-trigger" onclick="togglePrompt(this)">
+          <div class="prompt-trigger-left">
+            <span class="prompt-num">08</span>
+            <div>
+              <div class="prompt-title">Deal Scoring &amp; Prioritisation<span class="prompt-cat-tag">Forecasting</span></div>
+              <div class="prompt-saves">Saves ~1.5 hrs/week</div>
+            </div>
+          </div>
+          <span class="prompt-arrow">↓</span>
+        </button>
+        <div class="prompt-body">
+          <p class="prompt-context">Use weekly to decide where to focus time and energy. Paste in your active deals with key context.</p>
+          <div class="prompt-box">
+            <button class="prompt-copy-btn" onclick="copyPrompt(this)">Copy</button>
+            "Score these deals by close probability. For each deal: [paste list with deal name, value, stage, last activity, stakeholder engagement, and budget/timeline status]. Score each out of 10 based on recency of engagement, deal stage, and qualification completeness. Output as a ranked list with score and one-line rationale per deal."
+          </div>
+          <p class="prompt-output"><strong>Output:</strong> Ranked deal list with prioritisation rationale</p>
+        </div>
+      </div>
+
+      <div class="prompt-item" data-category="forecasting">
+        <button class="prompt-trigger" onclick="togglePrompt(this)">
+          <div class="prompt-trigger-left">
+            <span class="prompt-num">09</span>
+            <div>
+              <div class="prompt-title">Win/Loss Analysis<span class="prompt-cat-tag">Forecasting</span></div>
+              <div class="prompt-saves">Saves ~3 hrs/quarter</div>
+            </div>
+          </div>
+          <span class="prompt-arrow">↓</span>
+        </button>
+        <div class="prompt-body">
+          <p class="prompt-context">Run quarterly. Paste in closed won and lost deals with brief context. Surfaces patterns you'd otherwise miss.</p>
+          <div class="prompt-box">
+            <button class="prompt-copy-btn" onclick="copyPrompt(this)">Copy</button>
+            "Analyse these won and lost deals from the last quarter: [paste deals with outcome, deal size, source, industry, reason won/lost if known]. Identify: top 3 reasons we won, top 3 reasons we lost, patterns in lost deals (size, stage, source, objection type), and 3 concrete recommendations to improve win rate next quarter."
+          </div>
+          <p class="prompt-output"><strong>Output:</strong> Quarterly win/loss insight report with action items</p>
+        </div>
+      </div>
+
+      <div class="prompt-item" data-category="forecasting">
+        <button class="prompt-trigger" onclick="togglePrompt(this)">
+          <div class="prompt-trigger-left">
+            <span class="prompt-num">10</span>
+            <div>
+              <div class="prompt-title">Pipeline Velocity Calculator<span class="prompt-cat-tag">Forecasting</span></div>
+              <div class="prompt-saves">Saves ~1 hr/month</div>
+            </div>
+          </div>
+          <span class="prompt-arrow">↓</span>
+        </button>
+        <div class="prompt-body">
+          <p class="prompt-context">The single most important metric in sales — how fast revenue moves through your pipeline. This prompt explains it and tells you what to improve.</p>
+          <div class="prompt-box">
+            <button class="prompt-copy-btn" onclick="copyPrompt(this)">Copy</button>
+            "Calculate pipeline velocity using these metrics: average deal size [$X], win rate [X%], average sales cycle [X days], number of active opportunities [X]. Explain what this velocity number means in plain language, how it compares to a healthy benchmark for a [business type], and which of the four levers — deal size, win rate, cycle length, or volume — would have the biggest impact if improved by 20%."
+          </div>
+          <p class="prompt-output"><strong>Output:</strong> Velocity score with prioritised improvement levers</p>
+        </div>
+      </div>
+
+      <!-- COACHING -->
+      <div class="prompt-item" data-category="coaching">
+        <button class="prompt-trigger" onclick="togglePrompt(this)">
+          <div class="prompt-trigger-left">
+            <span class="prompt-num">11</span>
+            <div>
+              <div class="prompt-title">Discovery Call Debrief<span class="prompt-cat-tag">Coaching</span></div>
+              <div class="prompt-saves">Saves ~1 hr/week</div>
+            </div>
+          </div>
+          <span class="prompt-arrow">↓</span>
+        </button>
+        <div class="prompt-body">
+          <p class="prompt-context">Run immediately after a call while it's fresh. Paste in your notes or a transcript. Gets honest, specific feedback fast.</p>
+          <div class="prompt-box">
+            <button class="prompt-copy-btn" onclick="copyPrompt(this)">Copy</button>
+            "Here are my notes from a discovery call: [paste notes or transcript]. Score the call 1–10 on: rapport building, problem identification, qualifying budget/authority/need/timeline, and next step commitment. For each area below 8, give specific feedback on what was missed and one concrete thing to do differently on the next call."
+          </div>
+          <p class="prompt-output"><strong>Output:</strong> Scored call debrief with specific coaching actions</p>
+        </div>
+      </div>
+
+      <div class="prompt-item" data-category="coaching">
+        <button class="prompt-trigger" onclick="togglePrompt(this)">
+          <div class="prompt-trigger-left">
+            <span class="prompt-num">12</span>
+            <div>
+              <div class="prompt-title">Rep Skills Gap Assessment<span class="prompt-cat-tag">Coaching</span></div>
+              <div class="prompt-saves">Saves ~2 hrs/month</div>
+            </div>
+          </div>
+          <span class="prompt-arrow">↓</span>
+        </button>
+        <div class="prompt-body">
+          <p class="prompt-context">Use monthly. Paste in activity and outcome data for a rep. Turns numbers into a coaching plan.</p>
+          <div class="prompt-box">
+            <button class="prompt-copy-btn" onclick="copyPrompt(this)">Copy</button>
+            "Based on these 30-day activity and outcome metrics for a [SDR/AE]: [paste data — calls made, emails sent, meetings booked, pipeline generated, deals advanced, deals closed, win rate]. Identify their top 2 strengths and top 2 development areas. Recommend 3 specific coaching activities with a clear success metric for each."
+          </div>
+          <p class="prompt-output"><strong>Output:</strong> Coaching plan with targeted development actions</p>
+        </div>
+      </div>
+
+      <div class="prompt-item" data-category="coaching">
+        <button class="prompt-trigger" onclick="togglePrompt(this)">
+          <div class="prompt-trigger-left">
+            <span class="prompt-num">13</span>
+            <div>
+              <div class="prompt-title">Weekly 1:1 Meeting Agenda<span class="prompt-cat-tag">Coaching</span></div>
+              <div class="prompt-saves">Saves ~1 hr/week</div>
+            </div>
+          </div>
+          <span class="prompt-arrow">↓</span>
+        </button>
+        <div class="prompt-body">
+          <p class="prompt-context">Prep this before each weekly check-in. Keeps the conversation focused and avoids the "how's the pipeline?" trap.</p>
+          <div class="prompt-box">
+            <button class="prompt-copy-btn" onclick="copyPrompt(this)">Copy</button>
+            "Create a 30-minute weekly 1:1 agenda for a sales manager meeting with a rep who is [describe current performance and any active challenges]. Include: a pipeline review section (3 deal-inspection questions), a skills coaching focus for this week, a blockers discussion, and a single commitment the rep makes before next week. Tone: direct, supportive, not bureaucratic."
+          </div>
+          <p class="prompt-output"><strong>Output:</strong> Structured 1:1 agenda that actually drives improvement</p>
+        </div>
+      </div>
+
+      <div class="prompt-item" data-category="coaching">
+        <button class="prompt-trigger" onclick="togglePrompt(this)">
+          <div class="prompt-trigger-left">
+            <span class="prompt-num">14</span>
+            <div>
+              <div class="prompt-title">Objection Handling Coach<span class="prompt-cat-tag">Coaching</span></div>
+              <div class="prompt-saves">Saves ~2 hrs/month</div>
+            </div>
+          </div>
+          <span class="prompt-arrow">↓</span>
+        </button>
+        <div class="prompt-body">
+          <p class="prompt-context">Use when a rep is consistently losing deals to the same objection. Generates three context-specific responses they can practise.</p>
+          <div class="prompt-box">
+            <button class="prompt-copy-btn" onclick="copyPrompt(this)">Copy</button>
+            "A sales rep is struggling with this objection: '[paste the exact objection]'. Write 3 response frameworks they can use depending on where in the process it appears — early (discovery), mid (proposal), and late (close). Each response should acknowledge the concern, reframe it, and move towards a next step. Keep each under 60 words."
+          </div>
+          <p class="prompt-output"><strong>Output:</strong> Three ready-to-use objection responses with context</p>
+        </div>
+      </div>
+
+      <!-- RECRUITING -->
+      <div class="prompt-item" data-category="recruiting">
+        <button class="prompt-trigger" onclick="togglePrompt(this)">
+          <div class="prompt-trigger-left">
+            <span class="prompt-num">15</span>
+            <div>
+              <div class="prompt-title">Sales Job Description<span class="prompt-cat-tag">Recruiting</span></div>
+              <div class="prompt-saves">Saves ~2 hrs/hire</div>
+            </div>
+          </div>
+          <span class="prompt-arrow">↓</span>
+        </button>
+        <div class="prompt-body">
+          <p class="prompt-context">Generates a JD that attracts ambitious salespeople — not corporate copy-paste. Edit the tone and specifics before posting.</p>
+          <div class="prompt-box">
+            <button class="prompt-copy-btn" onclick="copyPrompt(this)">Copy</button>
+            "Write a job description for a [SDR / AE / Sales Manager] at a [business type] that sells [offer] to [ICP]. Key activities include [list 3–4 responsibilities]. Ideal candidate has [experience level and key traits]. Include: a one-paragraph role overview, 5 key responsibilities, 5 must-have attributes, and a 'what we offer' section. Tone: direct, human, no corporate jargon. Speaks to ambitious salespeople, not HR compliance."
+          </div>
+          <p class="prompt-output"><strong>Output:</strong> Job description that attracts the right candidates</p>
+        </div>
+      </div>
+
+      <div class="prompt-item" data-category="recruiting">
+        <button class="prompt-trigger" onclick="togglePrompt(this)">
+          <div class="prompt-trigger-left">
+            <span class="prompt-num">16</span>
+            <div>
+              <div class="prompt-title">Interview Question Bank<span class="prompt-cat-tag">Recruiting</span></div>
+              <div class="prompt-saves">Saves ~2 hrs/hire</div>
+            </div>
+          </div>
+          <span class="prompt-arrow">↓</span>
+        </button>
+        <div class="prompt-body">
+          <p class="prompt-context">Generate a full interview pack for any sales role. Include the answer guide so interviewers know what good looks like.</p>
+          <div class="prompt-box">
+            <button class="prompt-copy-btn" onclick="copyPrompt(this)">Copy</button>
+            "Generate 15 interview questions for a [SDR/AE] candidate at a [business type]. Mix: 5 behavioural questions (STAR format), 5 situational sales scenarios, 3 skills assessment questions, and 2 culture/motivation questions. For each question, include one sentence describing what a strong answer looks like and one red flag to watch for."
+          </div>
+          <p class="prompt-output"><strong>Output:</strong> Interview pack with strong/weak answer guide</p>
+        </div>
+      </div>
+
+      <div class="prompt-item" data-category="recruiting">
+        <button class="prompt-trigger" onclick="togglePrompt(this)">
+          <div class="prompt-trigger-left">
+            <span class="prompt-num">17</span>
+            <div>
+              <div class="prompt-title">Candidate Scorecard<span class="prompt-cat-tag">Recruiting</span></div>
+              <div class="prompt-saves">Saves ~1.5 hrs/hire</div>
+            </div>
+          </div>
+          <span class="prompt-arrow">↓</span>
+        </button>
+        <div class="prompt-body">
+          <p class="prompt-context">Removes bias from hiring decisions. Use this to compare candidates objectively across the same criteria.</p>
+          <div class="prompt-box">
+            <button class="prompt-copy-btn" onclick="copyPrompt(this)">Copy</button>
+            "Create a hiring scorecard for a [SDR/AE] role at a [business type]. Include: 8 competencies to assess (mix of skills, traits, and experience), a 1–5 rating scale with specific behavioural anchors for each score, a weighted scoring methodology to compare candidates fairly, and a list of 5 disqualifying red flags to watch for across the process."
+          </div>
+          <p class="prompt-output"><strong>Output:</strong> Objective scorecard to remove bias from hiring</p>
+        </div>
+      </div>
+
+      <div class="prompt-item" data-category="recruiting">
+        <button class="prompt-trigger" onclick="togglePrompt(this)">
+          <div class="prompt-trigger-left">
+            <span class="prompt-num">18</span>
+            <div>
+              <div class="prompt-title">30/60/90 Day Onboarding Plan<span class="prompt-cat-tag">Recruiting</span></div>
+              <div class="prompt-saves">Saves ~3 hrs/hire</div>
+            </div>
+          </div>
+          <span class="prompt-arrow">↓</span>
+        </button>
+        <div class="prompt-body">
+          <p class="prompt-context">Gives new hires a clear path from day one. Reduces ramp time and removes "what should I be doing?" anxiety.</p>
+          <div class="prompt-box">
+            <button class="prompt-copy-btn" onclick="copyPrompt(this)">Copy</button>
+            "Create a 30/60/90 day onboarding plan for a new [AE/SDR] at a [business type] selling [offer]. Day 1–30: learning and shadowing. Day 31–60: supported selling. Day 61–90: independent ramp. For each phase include: weekly focus areas, 3 key deliverables, and measurable success criteria. Include a list of what the manager needs to provide in each phase."
+          </div>
+          <p class="prompt-output"><strong>Output:</strong> Structured ramp plan that cuts time-to-productivity</p>
+        </div>
+      </div>
+
+      <!-- COMP & REVOPS -->
+      <div class="prompt-item" data-category="comp">
+        <button class="prompt-trigger" onclick="togglePrompt(this)">
+          <div class="prompt-trigger-left">
+            <span class="prompt-num">19</span>
+            <div>
+              <div class="prompt-title">Commission Structure Design<span class="prompt-cat-tag">Comp &amp; RevOps</span></div>
+              <div class="prompt-saves">Saves ~3 hrs/plan</div>
+            </div>
+          </div>
+          <span class="prompt-arrow">↓</span>
+        </button>
+        <div class="prompt-body">
+          <p class="prompt-context">Designing comp wrong kills motivation and retention. Use this to build a structure that drives the right behaviour.</p>
+          <div class="prompt-box">
+            <button class="prompt-copy-btn" onclick="copyPrompt(this)">Copy</button>
+            "Design a commission structure for a [SDR/AE] at a [business type] with a target OTE of [$X]. Include: recommended base/variable split with rationale, commission rate on closed revenue, accelerator tiers above quota (e.g. 100–120%, 120%+), any clawback provisions, and a worked example showing monthly take-home at 50%, 100%, and 150% of quota. Flag any common mistakes to avoid."
+          </div>
+          <p class="prompt-output"><strong>Output:</strong> Full comp plan with worked examples and warnings</p>
+        </div>
+      </div>
+
+      <div class="prompt-item" data-category="comp">
+        <button class="prompt-trigger" onclick="togglePrompt(this)">
+          <div class="prompt-trigger-left">
+            <span class="prompt-num">20</span>
+            <div>
+              <div class="prompt-title">Quota-Setting Framework<span class="prompt-cat-tag">Comp &amp; RevOps</span></div>
+              <div class="prompt-saves">Saves ~2 hrs/quarter</div>
+            </div>
+          </div>
+          <span class="prompt-arrow">↓</span>
+        </button>
+        <div class="prompt-body">
+          <p class="prompt-context">Quota set too high kills morale. Too low wastes capacity. This prompt reconciles top-down and bottom-up approaches.</p>
+          <div class="prompt-box">
+            <button class="prompt-copy-btn" onclick="copyPrompt(this)">Copy</button>
+            "Help me set quarterly quota for a [AE/SDR] using this data: last quarter revenue [$X], number of reps [X], pipeline coverage ratio [X:1], average deal size [$X], average sales cycle [X days], current win rate [X%]. Run both a top-down calculation (revenue goal ÷ headcount) and a bottom-up calculation (activity capacity × conversion rates). Reconcile the two and recommend a final quota with reasoning."
+          </div>
+          <p class="prompt-output"><strong>Output:</strong> Data-backed quota recommendation with methodology</p>
+        </div>
+      </div>
+
+      <div class="prompt-item" data-category="comp">
+        <button class="prompt-trigger" onclick="togglePrompt(this)">
+          <div class="prompt-trigger-left">
+            <span class="prompt-num">21</span>
+            <div>
+              <div class="prompt-title">RevOps Audit<span class="prompt-cat-tag">Comp &amp; RevOps</span></div>
+              <div class="prompt-saves">Saves ~4 hrs/audit</div>
+            </div>
+          </div>
+          <span class="prompt-arrow">↓</span>
+        </button>
+        <div class="prompt-body">
+          <p class="prompt-context">Use when pipeline data feels unreliable or reporting is inconsistent. Identifies where the ops setup is breaking down.</p>
+          <div class="prompt-box">
+            <button class="prompt-copy-btn" onclick="copyPrompt(this)">Copy</button>
+            "Audit the revenue operations setup for a [business type] based on this description: [describe current CRM, data entry practices, reporting setup, and known issues]. Identify: CRM data gaps that distort pipeline visibility, reporting blind spots, top 3 automation opportunities, and the single process change that would most improve forecast accuracy. Be specific and direct."
+          </div>
+          <p class="prompt-output"><strong>Output:</strong> RevOps gap analysis with prioritised fixes</p>
+        </div>
+      </div>
+
+      <div class="prompt-item" data-category="comp">
+        <button class="prompt-trigger" onclick="togglePrompt(this)">
+          <div class="prompt-trigger-left">
+            <span class="prompt-num">22</span>
+            <div>
+              <div class="prompt-title">Territory Plan<span class="prompt-cat-tag">Comp &amp; RevOps</span></div>
+              <div class="prompt-saves">Saves ~3 hrs/plan</div>
+            </div>
+          </div>
+          <span class="prompt-arrow">↓</span>
+        </button>
+        <div class="prompt-body">
+          <p class="prompt-context">Use when adding headcount or restructuring coverage. Poor territory design creates internal conflict and leaves revenue on the table.</p>
+          <div class="prompt-box">
+            <button class="prompt-copy-btn" onclick="copyPrompt(this)">Copy</button>
+            "Create a territory plan for [number] AEs covering [market description]. Include: segmentation criteria (by company size, industry, and/or geography), account distribution methodology, how to handle account conflicts and overlaps, pipeline coverage ratio targets per rep, and a review cadence to rebalance territories as the team grows."
+          </div>
+          <p class="prompt-output"><strong>Output:</strong> Territory plan with segmentation and conflict resolution</p>
+        </div>
+      </div>
+
+      <!-- PERFORMANCE -->
+      <div class="prompt-item" data-category="performance">
+        <button class="prompt-trigger" onclick="togglePrompt(this)">
+          <div class="prompt-trigger-left">
+            <span class="prompt-num">23</span>
+            <div>
+              <div class="prompt-title">KPI Dashboard Design<span class="prompt-cat-tag">Performance</span></div>
+              <div class="prompt-saves">Saves ~3 hrs/setup</div>
+            </div>
+          </div>
+          <span class="prompt-arrow">↓</span>
+        </button>
+        <div class="prompt-body">
+          <p class="prompt-context">Most sales dashboards measure too much or the wrong things. This prompt produces a focused, stage-appropriate metric set.</p>
+          <div class="prompt-box">
+            <button class="prompt-copy-btn" onclick="copyPrompt(this)">Copy</button>
+            "Design a sales KPI dashboard for a [business type] with [number] reps at [revenue stage]. Include: 5 leading indicators (activity metrics that predict results), 5 lagging indicators (outcome metrics that measure results), the recommended reporting cadence for each (daily/weekly/monthly), realistic benchmarks for each metric at this stage, and which 3 metrics matter most right now."
+          </div>
+          <p class="prompt-output"><strong>Output:</strong> Focused KPI set with benchmarks and rationale</p>
+        </div>
+      </div>
+
+      <div class="prompt-item" data-category="performance">
+        <button class="prompt-trigger" onclick="togglePrompt(this)">
+          <div class="prompt-trigger-left">
+            <span class="prompt-num">24</span>
+            <div>
+              <div class="prompt-title">Quarterly Performance Review<span class="prompt-cat-tag">Performance</span></div>
+              <div class="prompt-saves">Saves ~1.5 hrs/rep</div>
+            </div>
+          </div>
+          <span class="prompt-arrow">↓</span>
+        </button>
+        <div class="prompt-body">
+          <p class="prompt-context">Produces a fair, data-backed performance review. Add context and soften any language that feels too blunt before the conversation.</p>
+          <div class="prompt-box">
+            <button class="prompt-copy-btn" onclick="copyPrompt(this)">Copy</button>
+            "Write a quarterly performance review for a sales rep with these metrics: [paste quota attainment, pipeline generated, activity metrics, and any qualitative observations]. Structure as: overall summary (2–3 sentences), 2–3 strengths with specific examples, 2 development areas with specific examples, and 3 SMART goals for next quarter. Tone: direct, fair, growth-oriented — not punishing."
+          </div>
+          <p class="prompt-output"><strong>Output:</strong> Structured performance review draft ready to personalise</p>
+        </div>
+      </div>
+
+      <div class="prompt-item" data-category="performance">
+        <button class="prompt-trigger" onclick="togglePrompt(this)">
+          <div class="prompt-trigger-left">
+            <span class="prompt-num">25</span>
+            <div>
+              <div class="prompt-title">Performance Improvement Plan<span class="prompt-cat-tag">Performance</span></div>
+              <div class="prompt-saves">Saves ~2 hrs/PIP</div>
+            </div>
+          </div>
+          <span class="prompt-arrow">↓</span>
+        </button>
+        <div class="prompt-body">
+          <p class="prompt-context">A PIP should be a genuine recovery plan, not a paper trail. This prompt creates one that's defensible, clear, and gives the rep a real chance to improve.</p>
+          <div class="prompt-box">
+            <button class="prompt-copy-btn" onclick="copyPrompt(this)">Copy</button>
+            "Create a 60-day Performance Improvement Plan for a sales rep with these performance gaps: [describe specific issues with data]. Include: clearly defined performance gaps with supporting metrics, measurable weekly targets for each gap, what support and resources will be provided, bi-weekly check-in milestones with pass/fail criteria, and the consequence if targets aren't met by day 60."
+          </div>
+          <p class="prompt-output"><strong>Output:</strong> Clear, fair PIP with measurable milestones</p>
+        </div>
+      </div>
+
+      <div class="prompt-item" data-category="performance">
+        <button class="prompt-trigger" onclick="togglePrompt(this)">
+          <div class="prompt-trigger-left">
+            <span class="prompt-num">26</span>
+            <div>
+              <div class="prompt-title">Rep Stack Ranking<span class="prompt-cat-tag">Performance</span></div>
+              <div class="prompt-saves">Saves ~1.5 hrs/month</div>
+            </div>
+          </div>
+          <span class="prompt-arrow">↓</span>
+        </button>
+        <div class="prompt-body">
+          <p class="prompt-context">Use monthly to get an objective view of team performance. Balanced scoring prevents quota attainment from masking other problems.</p>
+          <div class="prompt-box">
+            <button class="prompt-copy-btn" onclick="copyPrompt(this)">Copy</button>
+            "Rank these reps using a balanced scorecard: [paste rep names with quota attainment %, pipeline generated, key activity metrics, and manager assessment notes]. Apply this weighting: 40% quota attainment, 30% pipeline generation, 20% activity metrics, 10% manager assessment. Show the ranked list with weighted scores and a brief summary of the top performer and the rep most in need of coaching attention."
+          </div>
+          <p class="prompt-output"><strong>Output:</strong> Objective stack ranking with coaching priorities</p>
+        </div>
+      </div>
+
+      <!-- OPERATIONS -->
+      <div class="prompt-item" data-category="operations">
+        <button class="prompt-trigger" onclick="togglePrompt(this)">
+          <div class="prompt-trigger-left">
+            <span class="prompt-num">27</span>
+            <div>
+              <div class="prompt-title">QBR Template<span class="prompt-cat-tag">Operations</span></div>
+              <div class="prompt-saves">Saves ~3 hrs/quarter</div>
+            </div>
+          </div>
+          <span class="prompt-arrow">↓</span>
+        </button>
+        <div class="prompt-body">
+          <p class="prompt-context">Most QBRs are bloated deck reviews. This produces a tight agenda that forces strategic thinking, not just number readouts.</p>
+          <div class="prompt-box">
+            <button class="prompt-copy-btn" onclick="copyPrompt(this)">Copy</button>
+            "Create a Quarterly Business Review template for a [internal sales team / client meeting] at a [business type]. Build it as a slide-by-slide outline covering: last quarter performance vs. targets, pipeline health analysis, top 3 wins and learnings, competitive/market updates, strategy for next quarter with specific initiatives, and resource or support needed. Keep the whole meeting to 60 minutes. Flag which slides require the most preparation."
+          </div>
+          <p class="prompt-output"><strong>Output:</strong> QBR outline that drives strategy, not just reporting</p>
+        </div>
+      </div>
+
+      <div class="prompt-item" data-category="operations">
+        <button class="prompt-trigger" onclick="togglePrompt(this)">
+          <div class="prompt-trigger-left">
+            <span class="prompt-num">28</span>
+            <div>
+              <div class="prompt-title">Pipeline Review Meeting Format<span class="prompt-cat-tag">Operations</span></div>
+              <div class="prompt-saves">Saves ~1 hr/week</div>
+            </div>
+          </div>
+          <span class="prompt-arrow">↓</span>
+        </button>
+        <div class="prompt-body">
+          <p class="prompt-context">A structured pipeline review is the single most valuable recurring habit in a sales team. This creates the format and the deal inspection questions.</p>
+          <div class="prompt-box">
+            <button class="prompt-copy-btn" onclick="copyPrompt(this)">Copy</button>
+            "Design a weekly pipeline review meeting format for a sales team of [size] covering [revenue stage]. Include: what reps must prepare before the meeting, a 45-minute agenda structure, 5 deal inspection questions to ask about each active deal, how to handle stuck or stale deals without shaming reps, and a standard action format to capture follow-ups. Make it useful, not theatrical."
+          </div>
+          <p class="prompt-output"><strong>Output:</strong> Pipeline review format with deal inspection questions</p>
+        </div>
+      </div>
+
+      <div class="prompt-item" data-category="operations">
+        <button class="prompt-trigger" onclick="togglePrompt(this)">
+          <div class="prompt-trigger-left">
+            <span class="prompt-num">29</span>
+            <div>
+              <div class="prompt-title">Sales-to-CS Handoff Template<span class="prompt-cat-tag">Operations</span></div>
+              <div class="prompt-saves">Saves ~1 hr/deal</div>
+            </div>
+          </div>
+          <span class="prompt-arrow">↓</span>
+        </button>
+        <div class="prompt-body">
+          <p class="prompt-context">A bad handoff destroys churn and referral rates. This creates a repeatable structure so nothing important falls through the cracks at close.</p>
+          <div class="prompt-box">
+            <button class="prompt-copy-btn" onclick="copyPrompt(this)">Copy</button>
+            "Create a sales-to-customer-success handoff template for a [business type] with a [product/service description]. Include: deal context (core pain, goals, and definition of success), stakeholder map (names, roles, decision-maker vs. champion), commitments made during the sale, any red flags or risks to watch, first 30-day success milestones, and the escalation path if things go wrong. Format as a one-page doc the CS team can read in 5 minutes."
+          </div>
+          <p class="prompt-output"><strong>Output:</strong> Handoff doc that protects retention from day one</p>
+        </div>
+      </div>
+
+      <div class="prompt-item" data-category="operations">
+        <button class="prompt-trigger" onclick="togglePrompt(this)">
+          <div class="prompt-trigger-left">
+            <span class="prompt-num">30</span>
+            <div>
+              <div class="prompt-title">Weekly Team Meeting Agenda<span class="prompt-cat-tag">Operations</span></div>
+              <div class="prompt-saves">Saves ~1 hr/week</div>
+            </div>
+          </div>
+          <span class="prompt-arrow">↓</span>
+        </button>
+        <div class="prompt-body">
+          <p class="prompt-context">The weekly all-hands is where team culture is made or lost. This prompt makes it energising, not a chore.</p>
+          <div class="prompt-box">
+            <button class="prompt-copy-btn" onclick="copyPrompt(this)">Copy</button>
+            "Design a weekly all-hands sales meeting agenda for a team of [size] at a [business type]. Keep it to 30 minutes. Include: wins of the week (rep-shared, not manager-presented), one pipeline metric that matters this week, a 5-minute skills moment (rotating topic), active blockers that need the team's help, and a close that sets the tone for the week. Make it something people actually want to attend."
+          </div>
+          <p class="prompt-output"><strong>Output:</strong> Team meeting format that builds culture and momentum</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="resources-callout">
+      <p>30 prompts. The full toolkit. Everything a sales manager handles — now available to any business. <strong>The gap between knowing and doing</strong> is where RevPath comes in.</p>
+      <a href="#your-calendly-link" class="btn-outline" style="color:var(--cream); border-color:rgba(255,255,255,0.2); white-space:nowrap; flex-shrink:0;">Book Free Audit</a>
+    </div>
+  </div>
+</section>
+
+<!-- EMAIL CAPTURE -->
+<section class="capture" id="lead-magnet">
+  <div class="inner">
+    <div class="capture-inner">
+      <div class="capture-content">
+        <span class="tag">Free Resource</span>
+        <h2>Get the Sales Audit Checklist</h2>
+        <p>The exact 27-point checklist used with every new client to find revenue leaks in 30 minutes. Free, no fluff.</p>
+        <div class="capture-perks">
+          <div class="capture-perk">Pipeline audit framework</div>
+          <div class="capture-perk">CRM setup checklist</div>
+          <div class="capture-perk">Outbound sequence template</div>
+          <div class="capture-perk">Objection handling guide</div>
+        </div>
+      </div>
+      <div class="capture-form-box">
+        <h3>Send me the checklist</h3>
+        <p>Delivered immediately. No spam, ever.</p>
+        <form onsubmit="handleSubmit(event)">
+          <div class="form-group">
+            <input type="text" placeholder="First name" />
+          </div>
+          <div class="form-group">
+            <input type="email" placeholder="Email address" required />
+          </div>
+          <button type="submit" class="btn-submit">Get the Free Checklist →</button>
+          <p class="form-note">No spam · Unsubscribe anytime</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final">
+  <div class="final-inner">
+    <span class="tag">Ready to Start?</span>
+    <h2 class="title">Book a free 20-minute audit call</h2>
+    <p>RevPath will review your current sales process, identify your biggest revenue leak, and hand you a clear action plan — whether we work together or not.</p>
+    <div class="final-btns">
+      <a href="#your-calendly-link" class="btn-black">Book Your Free Audit →</a>
+      <a href="#services" class="btn-outline">View Pricing First</a>
+    </div>
+    <p class="final-micro">No commitment · No pitch · Just a useful 20 minutes</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">RevPath</div>
+    <p><a href="mailto:hello@revpath.co">hello@revpath.co</a></p>
+    <p style="font-size:12px; color:var(--ink-light);">© 2026</p>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const id = a.getAttribute('href');
+      if (id === '#your-calendly-link') return;
+      const el = document.querySelector(id);
+      if (el) { e.preventDefault(); el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    });
+  });
+
+  function togglePrompt(btn) {
+    const item = btn.closest('.prompt-item');
+    item.classList.toggle('open');
+  }
+
+  function copyPrompt(btn) {
+    const box = btn.closest('.prompt-box');
+    const text = box.innerText.replace('Copy', '').trim();
+    navigator.clipboard.writeText(text).then(() => {
+      btn.textContent = 'Copied!';
+      btn.style.background = '#1a1a18';
+      btn.style.color = 'white';
+      setTimeout(() => { btn.textContent = 'Copy'; btn.style.background = ''; btn.style.color = ''; }, 2000);
+    });
+  }
+
+  function filterPrompts(category, tabEl) {
+    document.querySelectorAll('.prompts-tab').forEach(t => t.classList.remove('active'));
+    tabEl.classList.add('active');
+    document.querySelectorAll('.prompt-item').forEach(item => {
+      if (category === 'all' || item.dataset.category === category) {
+        item.style.display = '';
+      } else {
+        item.style.display = 'none';
+      }
+    });
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('button');
+    btn.textContent = '✓ Check your inbox!';
+    btn.style.background = '#2e7d4f';
+    btn.style.color = 'white';
+    btn.disabled = true;
+  }
+</script>
+
+</body>
+</html>
