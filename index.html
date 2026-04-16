@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>RevPath — AI-Powered Sales Systems for Small Business</title>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231a1a18'/><text x='16' y='23' font-family='Inter,Arial,sans-serif' font-size='20' font-weight='900' text-anchor='middle' fill='%23b5402a'>R</text></svg>" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
@@ -109,11 +108,11 @@
       justify-content: space-between;
     }
     .logo {
-      font-family: 'Inter', sans-serif;
-      font-size: 17px;
-      font-weight: 700;
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 600;
       color: var(--ink);
-      letter-spacing: -0.04em;
+      letter-spacing: -0.01em;
       text-decoration: none;
     }
     .nav-links {
@@ -827,6 +826,109 @@
     }
     .ai-bottom-callout p strong { color: white; }
 
+    /* ── COURSE ── */
+    .course {
+      background: var(--white);
+      padding: 96px 32px;
+    }
+    .course-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: end;
+      margin-bottom: 56px;
+    }
+    .course-header h2 { margin-bottom: 0; }
+    .course-badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      background: #f5ece9;
+      color: var(--rust);
+      padding: 4px 10px;
+      border-radius: 2px;
+      margin-bottom: 18px;
+    }
+    .course-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+    .course-card {
+      background: var(--white);
+      padding: 28px;
+    }
+    .course-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      font-weight: 400;
+      color: var(--cream-dark);
+      line-height: 1;
+      margin-bottom: 18px;
+    }
+    .course-card h3 {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+    .course-card p {
+      font-size: 13px;
+      color: var(--ink-muted);
+      line-height: 1.65;
+    }
+    .course-waitlist {
+      margin-top: 1px;
+      background: var(--ink);
+      padding: 40px;
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 60px;
+      align-items: center;
+    }
+    .course-waitlist-text h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+    .course-waitlist-text p {
+      font-size: 14px;
+      color: #6a6a60;
+      line-height: 1.7;
+    }
+    .course-waitlist-form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .course-waitlist-form input {
+      width: 100%;
+      background: #242420;
+      border: 1px solid #2e2e2a;
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      padding: 12px 16px;
+      border-radius: 3px;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    .course-waitlist-form input::placeholder { color: #4a4a44; }
+    .course-waitlist-form input:focus { border-color: #5a5a52; }
+    .course-waitlist-form .btn-submit {
+      margin-top: 2px;
+    }
+    .course-waitlist-form .form-note {
+      margin-top: 6px;
+    }
+
     /* ── RESOURCES ── */
     .resources {
       background: var(--white);
@@ -1085,6 +1187,9 @@
       .tools-grid { grid-template-columns: 1fr 1fr; }
       .resources-header { grid-template-columns: 1fr; gap: 24px; }
       .resources-callout { grid-template-columns: 1fr; }
+      .course-header { grid-template-columns: 1fr; gap: 24px; }
+      .course-grid { grid-template-columns: 1fr 1fr; }
+      .course-waitlist { grid-template-columns: 1fr; gap: 28px; }
       .services-header { grid-template-columns: 1fr; gap: 24px; }
       .services-grid { grid-template-columns: 1fr; }
       .process-header { grid-template-columns: 1fr; gap: 24px; }
@@ -1094,165 +1199,11 @@
     @media (max-width: 580px) {
       .nav-links { display: none; }
       .problem-grid { grid-template-columns: 1fr; }
+      .course-grid { grid-template-columns: 1fr; }
       .process-steps { grid-template-columns: 1fr; }
       .hero { padding: 64px 20px 56px; }
       .inner, .hero-inner { padding: 0 20px; }
     }
-
-    /* ── ROI Calculator ─────────────────────────────────────────────────── */
-    .roi-section {
-      margin-top: 80px;
-      padding-top: 60px;
-      border-top: 1px solid var(--cream-dark);
-    }
-    .roi-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      margin-bottom: 32px;
-      gap: 24px;
-      flex-wrap: wrap;
-    }
-    .roi-header h3 { font-size: clamp(20px,3vw,26px); margin-bottom: 6px; }
-    .roi-header p { color: var(--ink-muted); font-size: 15px; max-width: 420px; }
-    .roi-tag {
-      font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--gold);
-      background: rgba(212,151,30,0.12); padding: 5px 12px;
-      border-radius: 20px; white-space: nowrap; flex-shrink: 0;
-    }
-    .roi-goal-toggle {
-      display: flex; gap: 6px; margin-bottom: 28px;
-      background: var(--cream-dark); border-radius: 8px; padding: 5px;
-    }
-    .roi-goal-btn {
-      flex: 1; padding: 9px 16px; border: none; border-radius: 5px;
-      font-family: inherit; font-size: 13px; font-weight: 600;
-      cursor: pointer; transition: all 0.18s;
-      background: transparent; color: var(--ink-muted);
-    }
-    .roi-goal-btn.active { background: var(--rust); color: #faf9f6; }
-    .roi-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: start;
-    }
-    @media (max-width: 820px) { .roi-grid { grid-template-columns: 1fr; } }
-    .roi-card {
-      background: var(--white); border: 1px solid var(--cream-dark);
-      border-radius: 8px; padding: 24px; margin-bottom: 16px;
-    }
-    .roi-card:last-child { margin-bottom: 0; }
-    .roi-card-title {
-      font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
-      color: var(--rust); text-transform: uppercase;
-      margin-bottom: 16px; padding-bottom: 10px;
-      border-bottom: 2px solid var(--rust); display: inline-block;
-    }
-    .roi-field { margin-bottom: 18px; }
-    .roi-field label {
-      display: flex; justify-content: space-between; align-items: baseline;
-      font-size: 13px; font-weight: 600; color: var(--ink); margin-bottom: 7px;
-    }
-    .roi-field label span { font-size: 11px; font-weight: 400; color: var(--ink-light); }
-    .roi-field-row { display: flex; align-items: center; gap: 10px; }
-    .roi-field-row input[type="range"] {
-      flex: 1; -webkit-appearance: none; height: 4px;
-      background: var(--cream-dark); border-radius: 2px; outline: none; cursor: pointer;
-    }
-    .roi-field-row input[type="range"]::-webkit-slider-thumb {
-      -webkit-appearance: none; width: 16px; height: 16px; border-radius: 50%;
-      background: var(--rust); cursor: pointer;
-      border: 2px solid var(--white); box-shadow: 0 1px 3px rgba(0,0,0,0.2);
-    }
-    .roi-field-row .roi-val {
-      font-size: 14px; font-weight: 700; color: var(--ink); min-width: 58px; text-align: right;
-    }
-    .roi-number-input {
-      width: 100%; padding: 8px 12px; border: 1px solid var(--cream-dark);
-      border-radius: 5px; font-family: inherit; font-size: 14px;
-      font-weight: 600; color: var(--ink); background: var(--cream); outline: none;
-      transition: border-color 0.15s; margin-top: 5px;
-    }
-    .roi-number-input:focus { border-color: var(--rust); }
-    .roi-prefix-wrap { position: relative; }
-    .roi-prefix-wrap .roi-prefix {
-      position: absolute; left: 10px; top: 50%; transform: translateY(-50%);
-      font-weight: 600; color: var(--ink-muted); font-size: 13px; pointer-events: none;
-    }
-    .roi-prefix-wrap input { padding-left: 20px; }
-    .roi-section-lbl {
-      font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
-      color: var(--ink-muted); text-transform: uppercase;
-      margin: 22px 0 12px; padding-bottom: 5px; border-bottom: 1px solid var(--cream-dark);
-    }
-    /* Results */
-    .roi-results-panel { position: sticky; top: 20px; }
-    .roi-tier-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 6px; margin-bottom: 16px; }
-    .roi-tier-btn {
-      padding: 10px 6px; border: 2px solid var(--cream-dark); border-radius: 6px;
-      background: var(--white); cursor: pointer; font-family: inherit; text-align: center;
-      transition: all 0.15s;
-    }
-    .roi-tier-btn.active { border-color: var(--rust); background: rgba(181,64,42,0.06); }
-    .roi-tier-btn .roi-tier-name { font-size: 12px; font-weight: 700; color: var(--ink); margin-bottom: 3px; }
-    .roi-tier-btn .roi-tier-price { font-size: 11px; color: var(--ink-muted); }
-    .roi-hero {
-      background: var(--ink); border-radius: 8px;
-      padding: 28px 24px; margin-bottom: 16px; text-align: center;
-    }
-    .roi-hero-lbl {
-      font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
-      color: var(--gold); text-transform: uppercase; margin-bottom: 6px;
-    }
-    .roi-hero-val {
-      font-size: 52px; font-weight: 900; color: #faf9f6;
-      letter-spacing: -0.04em; line-height: 1; margin-bottom: 6px;
-    }
-    .roi-hero-sub { font-size: 13px; color: #c8c4ba; }
-    .roi-metrics-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
-    .roi-metric-box {
-      background: var(--white); border: 1px solid var(--cream-dark);
-      border-radius: 6px; padding: 14px; text-align: center;
-    }
-    .roi-metric-lbl { font-size: 10px; font-weight: 600; color: var(--ink-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 5px; }
-    .roi-metric-val { font-size: 21px; font-weight: 800; letter-spacing: -0.02em; color: var(--rust); }
-    .roi-metric-val.green { color: #2a7a4b; }
-    .roi-metric-val.gold { color: var(--gold); }
-    .roi-breakdown {
-      background: var(--white); border: 1px solid var(--cream-dark);
-      border-radius: 8px; overflow: hidden; margin-bottom: 16px;
-    }
-    .roi-brow {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 10px 14px; border-bottom: 1px solid var(--cream-dark); font-size: 13px;
-    }
-    .roi-brow:last-child { border-bottom: none; }
-    .roi-brow-lbl { color: var(--ink-muted); flex: 1.5; }
-    .roi-brow-before { color: var(--ink-light); font-size: 12px; flex: 1; text-align: right; }
-    .roi-brow-after { font-weight: 700; color: var(--ink); flex: 1; text-align: right; }
-    .roi-brow-delta {
-      font-size: 11px; font-weight: 600; padding: 2px 7px;
-      border-radius: 20px; flex-shrink: 0; margin-left: 8px;
-    }
-    .roi-brow-delta.up { background: rgba(42,122,75,0.1); color: #2a7a4b; }
-    .roi-brow-delta.down { background: rgba(181,64,42,0.1); color: var(--rust); }
-    .roi-brow-delta.neutral { background: var(--cream-dark); color: var(--ink-muted); }
-    .roi-cta {
-      background: var(--rust); border-radius: 8px; padding: 22px; text-align: center;
-    }
-    .roi-cta p { color: rgba(255,255,255,0.85); font-size: 14px; margin-bottom: 12px; }
-    .roi-cta strong { color: #fff; }
-    .roi-cta .btn-outline {
-      color: var(--rust) !important; background: #faf9f6;
-      border-color: transparent !important; font-size: 14px; padding: 10px 20px;
-    }
-    .roi-cta .btn-outline:hover { opacity: 0.9; }
-    .roi-disclaimer {
-      font-size: 11px; color: var(--ink-light); text-align: center;
-      margin-top: 14px; line-height: 1.6;
-    }
-    /* dim irrelevant fields by goal */
-    .roi-highlight-cost .roi-rev-field { opacity: 0.4; pointer-events: none; }
-    .roi-highlight-revenue .roi-cost-field { opacity: 0.4; pointer-events: none; }
   </style>
 </head>
 <body>
@@ -1264,10 +1215,11 @@
     <ul class="nav-links">
       <li><a href="#problem">The Problem</a></li>
       <li><a href="#ai-advantage">AI Advantage</a></li>
+      <li><a href="#course">Course</a></li>
       <li><a href="#services">Services</a></li>
       <li><a href="#resources">Resources</a></li>
     </ul>
-    <a href="https://calendly.com/sebastian-k-hammer/sales-audit" class="btn-black">Book a Free Call</a>
+    <a href="#your-calendly-link" class="btn-black">Book Free Sales Audit</a>
   </div>
 </nav>
 
@@ -1279,7 +1231,7 @@
       <h1>Your competitors<br>aren't using AI.<br><em>You will.</em></h1>
       <p class="hero-desc">RevPath builds AI-powered sales systems for small businesses and creators — combining enterprise process with the unfair advantage of modern AI. The result: more pipeline, less manual work, and a sales operation your competitors can't match.</p>
       <div class="hero-ctas">
-        <a href="https://calendly.com/sebastian-k-hammer/sales-audit" class="btn-black">Book a Free 20-Min Audit</a>
+        <a href="#your-calendly-link" class="btn-black">Book a Free 20-Min Audit</a>
         <a href="#services" class="btn-outline">See Pricing</a>
       </div>
       <div class="hero-stats">
@@ -1360,7 +1312,7 @@
     </div>
     <div class="problem-callout">
       <p>"This isn't a marketing problem — it's a sales infrastructure problem. RevPath was built specifically to solve it — using the same systems that work at the enterprise level."</p>
-      <a href="https://calendly.com/sebastian-k-hammer/sales-audit" class="btn-outline" style="color:var(--cream); border-color: rgba(255,255,255,0.2); white-space:nowrap; flex-shrink:0;">Book Free Audit</a>
+      <a href="#your-calendly-link" class="btn-outline" style="color:var(--cream); border-color: rgba(255,255,255,0.2); white-space:nowrap; flex-shrink:0;">Book Free Audit</a>
     </div>
   </div>
 </section>
@@ -1480,7 +1432,64 @@
     </div>
     <div class="ai-bottom-callout">
       <p>AI doesn't replace the strategy, the relationships, or the judgment. It removes the <strong>blank-page problem</strong> — so you spend your time on what actually moves the needle. Your competitors are still doing it the hard way.</p>
-      <a href="https://calendly.com/sebastian-k-hammer/sales-audit" class="btn-black" style="flex-shrink:0;">Book Free Audit</a>
+      <a href="#your-calendly-link" class="btn-black" style="flex-shrink:0;">Book Free Audit</a>
+    </div>
+  </div>
+</section>
+
+<!-- COURSE: AI FOR SALES -->
+<section class="course" id="course">
+  <div class="inner">
+    <div class="course-header">
+      <div>
+        <div class="course-badge">Coming Soon</div>
+        <h2 class="title">AI for Sales —<br><em>The Course</em></h2>
+      </div>
+      <p class="sub">A hands-on course teaching small business owners and founders how to use AI across every stage of their sales process — from lead research to close. No fluff, no theory. Just the systems that actually work.</p>
+    </div>
+    <div class="course-grid">
+      <div class="course-card">
+        <div class="course-num">01</div>
+        <h3>AI Fundamentals for Sales</h3>
+        <p>What AI can (and can't) do — cutting through the hype to find real, practical sales applications for your business.</p>
+      </div>
+      <div class="course-card">
+        <div class="course-num">02</div>
+        <h3>AI-Powered Lead Research</h3>
+        <p>Use AI to research prospects, build targeted lists, and find buying signals — in minutes, not hours.</p>
+      </div>
+      <div class="course-card">
+        <div class="course-num">03</div>
+        <h3>AI-Written Outreach at Scale</h3>
+        <p>Craft personalised cold emails and DMs — 10x your output with zero generic templates.</p>
+      </div>
+      <div class="course-card">
+        <div class="course-num">04</div>
+        <h3>CRM + AI Automation</h3>
+        <p>Set up AI-powered workflows in HubSpot, GHL, or Pipedrive to eliminate the manual work that kills momentum.</p>
+      </div>
+      <div class="course-card">
+        <div class="course-num">05</div>
+        <h3>AI for Sales Conversations</h3>
+        <p>Prep for calls, handle objections, and generate follow-ups with AI as your co-pilot.</p>
+      </div>
+      <div class="course-card">
+        <div class="course-num">06</div>
+        <h3>Building Your AI Sales System</h3>
+        <p>Put it all together — a repeatable, scalable AI-powered sales operation you own and control.</p>
+      </div>
+    </div>
+    <div class="course-waitlist">
+      <div class="course-waitlist-text">
+        <h3>Join the waitlist</h3>
+        <p>Be the first to know when the course launches. Early access, priority pricing, and bonus resources for waitlist members.</p>
+      </div>
+      <form class="course-waitlist-form" onsubmit="handleCourseWaitlist(event)">
+        <input type="text" name="name" placeholder="First name" />
+        <input type="email" name="email" placeholder="Email address" required />
+        <button type="submit" class="btn-submit">Join the Waitlist →</button>
+        <p class="form-note">No spam · We'll only email you about the course</p>
+      </form>
     </div>
   </div>
 </section>
@@ -1512,7 +1521,7 @@
           <div class="tier-item"><span class="tier-item-dash">–</span>30-day async Slack/email support</div>
         </div>
         <div class="tier-note">Great door-opener. Upsells naturally to Done-For-You.</div>
-        <a href="https://calendly.com/sebastian-k-hammer/sales-audit" class="btn-tier-outline">Get Started</a>
+        <a href="#your-calendly-link" class="btn-tier-outline">Get Started</a>
       </div>
 
       <!-- Growth (featured) -->
@@ -1531,7 +1540,7 @@
           <div class="tier-item"><span class="tier-item-dash">–</span>AI-generated monthly performance report</div>
         </div>
         <div class="tier-note">Core offer. 3 clients = $7,500/mo. Minimum 2-month engagement.</div>
-        <a href="https://calendly.com/sebastian-k-hammer/sales-audit" class="btn-tier-white">Book a Call →</a>
+        <a href="#your-calendly-link" class="btn-tier-white">Book a Call →</a>
       </div>
 
       <!-- Scale -->
@@ -1550,7 +1559,7 @@
           <div class="tier-item"><span class="tier-item-dash">–</span>Slack access — same-day response</div>
         </div>
         <div class="tier-note">For clients ready to build a team. You become a strategic partner.</div>
-        <a href="https://calendly.com/sebastian-k-hammer/sales-audit" class="btn-tier-outline">Book a Call</a>
+        <a href="#your-calendly-link" class="btn-tier-outline">Book a Call</a>
       </div>
 
     </div>
@@ -2309,198 +2318,9 @@
 
     </div>
 
-    <!-- ROI Calculator -->
-    <div class="roi-section">
-      <div class="roi-header">
-        <div>
-          <h3>ROI Calculator</h3>
-          <p>Enter your current numbers and see exactly what a better sales system is worth — before you spend a penny.</p>
-        </div>
-        <span class="roi-tag">Free Estimate</span>
-      </div>
-
-      <div class="roi-goal-toggle">
-        <button class="roi-goal-btn active" id="roi-btn-revenue" onclick="roiSetGoal('revenue')">Revenue Growth</button>
-        <button class="roi-goal-btn" id="roi-btn-cost" onclick="roiSetGoal('cost')">Cost Efficiency</button>
-      </div>
-
-      <div class="roi-grid" id="roi-grid">
-
-        <!-- LEFT: Inputs -->
-        <div>
-          <div class="roi-card">
-            <div class="roi-card-title">Your Current Numbers</div>
-
-            <div class="roi-section-lbl">Volume &amp; Pipeline</div>
-
-            <div class="roi-field roi-rev-field">
-              <label>Monthly Lead Volume <span>New leads entering pipeline</span></label>
-              <div class="roi-field-row">
-                <input type="range" id="r_leads" min="5" max="500" step="5" value="50" oninput="roiSync('r_leads','r_leads_n'); roiCalc()" />
-                <span class="roi-val"><span id="r_leads_v">50</span></span>
-              </div>
-              <input type="number" id="r_leads_n" class="roi-number-input" value="50" min="1" oninput="roiSync('r_leads_n','r_leads'); roiCalc()" />
-            </div>
-
-            <div class="roi-field roi-rev-field">
-              <label>Lead → Meeting Rate <span>% of leads that book a call</span></label>
-              <div class="roi-field-row">
-                <input type="range" id="r_l2m" min="1" max="60" step="1" value="20" oninput="roiCalc()" />
-                <span class="roi-val"><span id="r_l2m_v">20</span>%</span>
-              </div>
-            </div>
-
-            <div class="roi-field roi-rev-field">
-              <label>Meeting → Proposal Rate <span>% of meetings that lead to proposals</span></label>
-              <div class="roi-field-row">
-                <input type="range" id="r_m2p" min="5" max="100" step="1" value="60" oninput="roiCalc()" />
-                <span class="roi-val"><span id="r_m2p_v">60</span>%</span>
-              </div>
-            </div>
-
-            <div class="roi-field roi-rev-field">
-              <label>Win Rate <span>% of proposals that close</span></label>
-              <div class="roi-field-row">
-                <input type="range" id="r_win" min="1" max="80" step="1" value="30" oninput="roiCalc()" />
-                <span class="roi-val"><span id="r_win_v">30</span>%</span>
-              </div>
-            </div>
-
-            <div class="roi-section-lbl">Deal Economics</div>
-
-            <div class="roi-field roi-rev-field">
-              <label>Average Deal Size</label>
-              <div class="roi-prefix-wrap">
-                <span class="roi-prefix">£</span>
-                <input type="number" id="r_deal" class="roi-number-input" value="3000" min="100" step="100" oninput="roiCalc()" />
-              </div>
-            </div>
-
-            <div class="roi-field roi-cost-field">
-              <label>Sales Cycle <span>Weeks from first contact to close</span></label>
-              <div class="roi-field-row">
-                <input type="range" id="r_cycle" min="1" max="26" step="1" value="6" oninput="roiCalc()" />
-                <span class="roi-val"><span id="r_cycle_v">6</span> wks</span>
-              </div>
-            </div>
-
-            <div class="roi-section-lbl">Costs</div>
-
-            <div class="roi-field roi-cost-field">
-              <label>Monthly Sales Spend <span>Salaries, ads, tools, outsourcing</span></label>
-              <div class="roi-prefix-wrap">
-                <span class="roi-prefix">£</span>
-                <input type="number" id="r_cost" class="roi-number-input" value="2000" min="0" step="100" oninput="roiCalc()" />
-              </div>
-            </div>
-
-            <div class="roi-field roi-cost-field">
-              <label>No-Show / Ghost Rate <span>% of booked calls that don't attend</span></label>
-              <div class="roi-field-row">
-                <input type="range" id="r_noshow" min="0" max="60" step="1" value="20" oninput="roiCalc()" />
-                <span class="roi-val"><span id="r_noshow_v">20</span>%</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="roi-card">
-            <div class="roi-card-title">RevPath Impact Assumptions</div>
-            <p style="font-size:13px; color:var(--ink-muted); margin-bottom:16px;">Based on median client outcomes. Adjust to your situation.</p>
-
-            <div class="roi-field roi-rev-field">
-              <label>Lead Volume Increase <span id="r_leadimp_v">+20%</span></label>
-              <input type="range" id="r_leadimp" min="0" max="100" step="5" value="20" oninput="document.getElementById('r_leadimp_v').textContent='+'+this.value+'%'; roiCalc()" />
-            </div>
-            <div class="roi-field roi-rev-field">
-              <label>Conversion Rate Improvement <span id="r_convimp_v">+25%</span></label>
-              <input type="range" id="r_convimp" min="0" max="80" step="5" value="25" oninput="document.getElementById('r_convimp_v').textContent='+'+this.value+'%'; roiCalc()" />
-            </div>
-            <div class="roi-field roi-rev-field">
-              <label>Win Rate Improvement <span id="r_winimp_v">+20%</span></label>
-              <input type="range" id="r_winimp" min="0" max="60" step="5" value="20" oninput="document.getElementById('r_winimp_v').textContent='+'+this.value+'%'; roiCalc()" />
-            </div>
-            <div class="roi-field roi-rev-field">
-              <label>Deal Size Increase <span id="r_dealimp_v">+10%</span></label>
-              <input type="range" id="r_dealimp" min="0" max="50" step="5" value="10" oninput="document.getElementById('r_dealimp_v').textContent='+'+this.value+'%'; roiCalc()" />
-            </div>
-            <div class="roi-field roi-cost-field">
-              <label>Sales Cycle Reduction <span id="r_cycleimp_v">-25%</span></label>
-              <input type="range" id="r_cycleimp" min="0" max="50" step="5" value="25" oninput="document.getElementById('r_cycleimp_v').textContent='-'+this.value+'%'; roiCalc()" />
-            </div>
-            <div class="roi-field roi-cost-field">
-              <label>No-Show Reduction <span id="r_noshoiw_v">-40%</span></label>
-              <input type="range" id="r_noshoiw" min="0" max="80" step="5" value="40" oninput="document.getElementById('r_noshoiw_v').textContent='-'+this.value+'%'; roiCalc()" />
-            </div>
-          </div>
-        </div>
-
-        <!-- RIGHT: Results -->
-        <div class="roi-results-panel">
-          <div class="roi-tier-grid">
-            <button class="roi-tier-btn" id="roi-tier-starter" onclick="roiSetTier('starter')">
-              <div class="roi-tier-name">Starter</div><div class="roi-tier-price">£1,500 one-off</div>
-            </button>
-            <button class="roi-tier-btn active" id="roi-tier-growth" onclick="roiSetTier('growth')">
-              <div class="roi-tier-name">Growth</div><div class="roi-tier-price">£2,500/mo</div>
-            </button>
-            <button class="roi-tier-btn" id="roi-tier-scale" onclick="roiSetTier('scale')">
-              <div class="roi-tier-name">Scale</div><div class="roi-tier-price">£4,500/mo</div>
-            </button>
-          </div>
-
-          <div class="roi-hero">
-            <div class="roi-hero-lbl">Estimated Annual ROI</div>
-            <div class="roi-hero-val" id="r_roi_pct">—</div>
-            <div class="roi-hero-sub" id="r_roi_sub">Enter your numbers to see your ROI</div>
-          </div>
-
-          <div class="roi-metrics-grid">
-            <div class="roi-metric-box">
-              <div class="roi-metric-lbl">Monthly Uplift</div>
-              <div class="roi-metric-val green" id="r_uplift_mo">—</div>
-            </div>
-            <div class="roi-metric-box">
-              <div class="roi-metric-lbl">Annual Uplift</div>
-              <div class="roi-metric-val green" id="r_uplift_yr">—</div>
-            </div>
-            <div class="roi-metric-box">
-              <div class="roi-metric-lbl">Payback Period</div>
-              <div class="roi-metric-val gold" id="r_payback">—</div>
-            </div>
-            <div class="roi-metric-box">
-              <div class="roi-metric-lbl">Cost Saved/Year</div>
-              <div class="roi-metric-val" id="r_costsave">—</div>
-            </div>
-          </div>
-
-          <div class="roi-breakdown">
-            <div class="roi-brow" style="background:var(--cream-dark)">
-              <span class="roi-brow-lbl" style="font-weight:700;color:var(--ink)">Metric</span>
-              <span class="roi-brow-before" style="font-weight:700;color:var(--ink)">Before</span>
-              <span class="roi-brow-after" style="font-weight:700;color:var(--ink)">After</span>
-              <span class="roi-brow-delta neutral">Δ</span>
-            </div>
-            <div class="roi-brow"><span class="roi-brow-lbl">Customers/mo</span><span class="roi-brow-before" id="rb_cust_b">—</span><span class="roi-brow-after" id="rb_cust_a">—</span><span class="roi-brow-delta neutral" id="rd_cust">—</span></div>
-            <div class="roi-brow"><span class="roi-brow-lbl">MRR</span><span class="roi-brow-before" id="rb_mrr_b">—</span><span class="roi-brow-after" id="rb_mrr_a">—</span><span class="roi-brow-delta neutral" id="rd_mrr">—</span></div>
-            <div class="roi-brow"><span class="roi-brow-lbl">Cost per Lead</span><span class="roi-brow-before" id="rb_cpl_b">—</span><span class="roi-brow-after" id="rb_cpl_a">—</span><span class="roi-brow-delta neutral" id="rd_cpl">—</span></div>
-            <div class="roi-brow"><span class="roi-brow-lbl">Cost per Customer</span><span class="roi-brow-before" id="rb_cpc_b">—</span><span class="roi-brow-after" id="rb_cpc_a">—</span><span class="roi-brow-delta neutral" id="rd_cpc">—</span></div>
-            <div class="roi-brow"><span class="roi-brow-lbl">Win Rate</span><span class="roi-brow-before" id="rb_win_b">—</span><span class="roi-brow-after" id="rb_win_a">—</span><span class="roi-brow-delta neutral" id="rd_win">—</span></div>
-            <div class="roi-brow"><span class="roi-brow-lbl">Sales Cycle</span><span class="roi-brow-before" id="rb_cyc_b">—</span><span class="roi-brow-after" id="rb_cyc_a">—</span><span class="roi-brow-delta neutral" id="rd_cyc">—</span></div>
-          </div>
-
-          <div class="roi-cta">
-            <p>Like these numbers? <strong>Let's validate them against your real data</strong> — free, no commitment.</p>
-            <a href="https://calendly.com/sebastian-k-hammer/sales-audit" class="btn-outline">Book Free Sales Audit →</a>
-          </div>
-          <p class="roi-disclaimer">Estimates are indicative. Actual results depend on implementation and market conditions. RevPath validates all projections during the audit.</p>
-        </div>
-      </div>
-    </div>
-    <!-- / ROI Calculator -->
-
     <div class="resources-callout">
       <p>30 prompts. The full toolkit. Everything a sales manager handles — now available to any business. <strong>The gap between knowing and doing</strong> is where RevPath comes in.</p>
-      <a href="https://calendly.com/sebastian-k-hammer/sales-audit" class="btn-outline" style="color:var(--cream); border-color:rgba(255,255,255,0.2); white-space:nowrap; flex-shrink:0;">Book Free Audit</a>
+      <a href="#your-calendly-link" class="btn-outline" style="color:var(--cream); border-color:rgba(255,255,255,0.2); white-space:nowrap; flex-shrink:0;">Book Free Audit</a>
     </div>
   </div>
 </section>
@@ -2545,7 +2365,7 @@
     <h2 class="title">Book a free 20-minute audit call</h2>
     <p>RevPath will review your current sales process, identify your biggest revenue leak, and hand you a clear action plan — whether we work together or not.</p>
     <div class="final-btns">
-      <a href="https://calendly.com/sebastian-k-hammer/sales-audit" class="btn-black">Book Your Free Audit →</a>
+      <a href="#your-calendly-link" class="btn-black">Book Your Free Audit →</a>
       <a href="#services" class="btn-outline">View Pricing First</a>
     </div>
     <p class="final-micro">No commitment · No pitch · Just a useful 20 minutes</p>
@@ -2561,11 +2381,18 @@
   </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
+  // ── SUPABASE ──
+  // TODO: Replace with your Supabase project URL and anon key
+  const SUPABASE_URL = 'https://YOUR_PROJECT.supabase.co';
+  const SUPABASE_ANON_KEY = 'YOUR_ANON_KEY';
+  const supabase = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
+
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
       const id = a.getAttribute('href');
-      if (id === 'https://calendly.com/sebastian-k-hammer/sales-audit') return;
+      if (id === '#your-calendly-link') return;
       const el = document.querySelector(id);
       if (el) { e.preventDefault(); el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
     });
@@ -2599,152 +2426,54 @@
     });
   }
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    const btn = e.target.querySelector('button');
-    btn.textContent = '✓ Check your inbox!';
-    btn.style.background = '#2e7d4f';
-    btn.style.color = 'white';
+  async function submitToWaitlist(form, source, successText) {
+    const btn = form.querySelector('button[type="submit"]');
+    const email = form.querySelector('input[type="email"]').value.trim();
+    const nameInput = form.querySelector('input[type="text"]');
+    const name = nameInput ? nameInput.value.trim() : '';
+
     btn.disabled = true;
-  }
+    btn.textContent = 'Submitting...';
 
-  // ── ROI Calculator ────────────────────────────────────────────────────────
-  let roiGoal = 'revenue';
-  let roiTier = 'growth';
-  const roiTiers = {
-    starter: { monthly: 0, oneoff: 1500 },
-    growth:  { monthly: 2500, oneoff: 0 },
-    scale:   { monthly: 4500, oneoff: 0 },
-  };
-
-  function rv(id) { return parseFloat(document.getElementById(id).value) || 0; }
-  function roiFmt(n) {
-    if (n >= 1000000) return '£' + (n/1000000).toFixed(1) + 'M';
-    if (n >= 1000)    return '£' + Math.round(n/1000) + 'k';
-    return '£' + Math.round(n);
-  }
-  function roiPct(n) { return (n >= 0 ? '+' : '') + n.toFixed(1) + '%'; }
-  function rSet(id, v) { const el = document.getElementById(id); if (el) el.textContent = v; }
-
-  function roiSync(fromId, toId) {
-    const from = document.getElementById(fromId);
-    const to   = document.getElementById(toId);
-    if (from && to) to.value = from.value;
-  }
-
-  function roiSetGoal(g) {
-    roiGoal = g;
-    document.getElementById('roi-btn-revenue').classList.toggle('active', g === 'revenue');
-    document.getElementById('roi-btn-cost').classList.toggle('active', g === 'cost');
-    const grid = document.getElementById('roi-grid');
-    grid.classList.toggle('roi-highlight-revenue', g === 'revenue');
-    grid.classList.toggle('roi-highlight-cost', g === 'cost');
-    roiCalc();
-  }
-
-  function roiSetTier(t) {
-    roiTier = t;
-    ['starter','growth','scale'].forEach(k =>
-      document.getElementById('roi-tier-'+k).classList.toggle('active', k === t)
-    );
-    roiCalc();
-  }
-
-  function roiCalc() {
-    const leads    = rv('r_leads');
-    const l2m      = rv('r_l2m') / 100;
-    const m2p      = rv('r_m2p') / 100;
-    const win      = rv('r_win') / 100;
-    const deal     = rv('r_deal');
-    const cycle    = rv('r_cycle');
-    const cost     = rv('r_cost');
-    const noshow   = rv('r_noshow') / 100;
-
-    const leadImp  = 1 + rv('r_leadimp') / 100;
-    const convImp  = 1 + rv('r_convimp') / 100;
-    const winImp   = 1 + rv('r_winimp') / 100;
-    const dealImp  = 1 + rv('r_dealimp') / 100;
-    const cycleImp = 1 - rv('r_cycleimp') / 100;
-    const nsImp    = 1 - rv('r_noshoiw') / 100;
-
-    // Current
-    const meets_h  = leads * l2m * (1 - noshow);
-    const cust_cur = meets_h * m2p * win;
-    const mrr_cur  = cust_cur * deal;
-    const cpl_cur  = leads > 0 ? cost / leads : 0;
-    const cpc_cur  = cust_cur > 0 ? cost / cust_cur : 0;
-
-    // Improved
-    const leads_n  = leads * leadImp;
-    const l2m_n    = Math.min(l2m * convImp, 0.9);
-    const m2p_n    = Math.min(m2p * convImp, 1.0);
-    const win_n    = Math.min(win * winImp, 0.85);
-    const deal_n   = deal * dealImp;
-    const cycle_n  = cycle * cycleImp;
-    const ns_n     = noshow * nsImp;
-
-    const meets_n  = leads_n * l2m_n * (1 - ns_n);
-    const cust_new = meets_n * m2p_n * win_n;
-    const mrr_new  = cust_new * deal_n;
-    const cpl_new  = leads_n > 0 ? cost / leads_n : 0;
-    const cpc_new  = cust_new > 0 ? cost / cust_new : 0;
-
-    const mo_uplift  = mrr_new - mrr_cur;
-    const yr_uplift  = mo_uplift * 12;
-    const cost_save  = Math.max(0, cost * (1 - cycleImp) * 0.3 * 12);
-    const total_ben  = yr_uplift + cost_save;
-
-    const t          = roiTiers[roiTier];
-    const annual_fee = t.oneoff > 0 ? t.oneoff : t.monthly * 12;
-    const roi_num    = annual_fee > 0 ? ((total_ben - annual_fee) / annual_fee) * 100 : 0;
-    const payback    = mo_uplift > 0 ? Math.ceil(annual_fee / (mo_uplift + cost_save/12)) : 99;
-
-    // Update hero
-    rSet('r_roi_pct', annual_fee > 0 ? Math.round(roi_num) + '%' : '—');
-    rSet('r_roi_sub', annual_fee > 0
-      ? roiFmt(total_ben) + ' benefit vs ' + roiFmt(annual_fee) + ' fee'
-      : 'Select a tier above');
-
-    rSet('r_uplift_mo', roiFmt(mo_uplift) + '/mo');
-    rSet('r_uplift_yr', roiFmt(yr_uplift) + '/yr');
-    rSet('r_payback',   payback < 24 ? payback + ' mo' : '24+ mo');
-    rSet('r_costsave',  roiFmt(cost_save) + '/yr');
-
-    // Breakdown
-    function rowUpdate(beforeId, afterId, deltaId, before, after, higherIsBetter) {
-      rSet(beforeId, before);
-      rSet(afterId, after);
-      const bVal = parseFloat(before.replace(/[^0-9.-]/g,''));
-      const aVal = parseFloat(after.replace(/[^0-9.-]/g,''));
-      const d    = bVal > 0 ? ((aVal - bVal) / bVal) * 100 : 0;
-      rSet(deltaId, roiPct(d));
-      const el = document.getElementById(deltaId);
-      if (el) {
-        const good = higherIsBetter ? d >= 0 : d <= 0;
-        el.className = 'roi-brow-delta ' + (good ? 'up' : 'down');
-      }
+    if (!supabase) {
+      btn.textContent = successText;
+      btn.style.background = '#2e7d4f';
+      btn.style.color = 'white';
+      return;
     }
 
-    rowUpdate('rb_cust_b','rb_cust_a','rd_cust', cust_cur.toFixed(1), cust_new.toFixed(1), true);
-    rowUpdate('rb_mrr_b','rb_mrr_a','rd_mrr', roiFmt(mrr_cur), roiFmt(mrr_new), true);
-    rowUpdate('rb_cpl_b','rb_cpl_a','rd_cpl', roiFmt(cpl_cur), roiFmt(cpl_new), false);
-    rowUpdate('rb_cpc_b','rb_cpc_a','rd_cpc', roiFmt(cpc_cur), roiFmt(cpc_new), false);
-    rowUpdate('rb_win_b','rb_win_a','rd_win', (win*100).toFixed(0)+'%', (win_n*100).toFixed(0)+'%', true);
-    rowUpdate('rb_cyc_b','rb_cyc_a','rd_cyc', cycle+' wks', cycle_n.toFixed(1)+' wks', false);
+    const { error } = await supabase.from('waitlist').insert([{ email, name: name || null, source }]);
 
-    // Sync slider labels
-    rSet('r_leads_v',   rv('r_leads'));
-    rSet('r_l2m_v',     rv('r_l2m'));
-    rSet('r_m2p_v',     rv('r_m2p'));
-    rSet('r_win_v',     rv('r_win'));
-    rSet('r_cycle_v',   rv('r_cycle'));
-    rSet('r_noshow_v',  rv('r_noshow'));
+    if (error) {
+      if (error.code === '23505') {
+        btn.textContent = "You're already on the list!";
+        btn.style.background = '#2e7d4f';
+        btn.style.color = 'white';
+      } else {
+        btn.textContent = 'Something went wrong — try again';
+        btn.style.background = 'var(--rust)';
+        btn.style.color = 'white';
+        btn.disabled = false;
+        setTimeout(() => { btn.textContent = successText.replace('✓ ', ''); btn.style.background = ''; btn.style.color = ''; }, 3000);
+      }
+      return;
+    }
+
+    btn.textContent = successText;
+    btn.style.background = '#2e7d4f';
+    btn.style.color = 'white';
+    form.reset();
   }
 
-  // Init ROI
-  roiSetGoal('revenue');
-  roiSetTier('growth');
-  roiCalc();
+  function handleSubmit(e) {
+    e.preventDefault();
+    submitToWaitlist(e.target, 'checklist', '✓ Check your inbox!');
+  }
+
+  function handleCourseWaitlist(e) {
+    e.preventDefault();
+    submitToWaitlist(e.target, 'course', "✓ You're on the list!");
+  }
 </script>
 
 </body>
