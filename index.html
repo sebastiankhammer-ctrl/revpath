@@ -1219,7 +1219,7 @@
       <li><a href="#services">Services</a></li>
       <li><a href="#resources">Resources</a></li>
     </ul>
-    <a href="#your-calendly-link" class="btn-black">Book Free Sales Audit</a>
+    <a href="https://calendly.com/sebastian-k-hammer/sales-audit" class="btn-black">Book Free Sales Audit</a>
   </div>
 </nav>
 
@@ -1231,7 +1231,7 @@
       <h1>Your competitors<br>aren't using AI.<br><em>You will.</em></h1>
       <p class="hero-desc">RevPath builds AI-powered sales systems for small businesses and creators — combining enterprise process with the unfair advantage of modern AI. The result: more pipeline, less manual work, and a sales operation your competitors can't match.</p>
       <div class="hero-ctas">
-        <a href="#your-calendly-link" class="btn-black">Book a Free 20-Min Audit</a>
+        <a href="https://calendly.com/sebastian-k-hammer/sales-audit" class="btn-black">Book a Free 20-Min Audit</a>
         <a href="#services" class="btn-outline">See Pricing</a>
       </div>
       <div class="hero-stats">
@@ -1312,7 +1312,7 @@
     </div>
     <div class="problem-callout">
       <p>"This isn't a marketing problem — it's a sales infrastructure problem. RevPath was built specifically to solve it — using the same systems that work at the enterprise level."</p>
-      <a href="#your-calendly-link" class="btn-outline" style="color:var(--cream); border-color: rgba(255,255,255,0.2); white-space:nowrap; flex-shrink:0;">Book Free Audit</a>
+      <a href="https://calendly.com/sebastian-k-hammer/sales-audit" class="btn-outline" style="color:var(--cream); border-color: rgba(255,255,255,0.2); white-space:nowrap; flex-shrink:0;">Book Free Audit</a>
     </div>
   </div>
 </section>
@@ -1432,7 +1432,7 @@
     </div>
     <div class="ai-bottom-callout">
       <p>AI doesn't replace the strategy, the relationships, or the judgment. It removes the <strong>blank-page problem</strong> — so you spend your time on what actually moves the needle. Your competitors are still doing it the hard way.</p>
-      <a href="#your-calendly-link" class="btn-black" style="flex-shrink:0;">Book Free Audit</a>
+      <a href="https://calendly.com/sebastian-k-hammer/sales-audit" class="btn-black" style="flex-shrink:0;">Book Free Audit</a>
     </div>
   </div>
 </section>
@@ -1521,7 +1521,7 @@
           <div class="tier-item"><span class="tier-item-dash">–</span>30-day async Slack/email support</div>
         </div>
         <div class="tier-note">Great door-opener. Upsells naturally to Done-For-You.</div>
-        <a href="#your-calendly-link" class="btn-tier-outline">Get Started</a>
+        <a href="https://calendly.com/sebastian-k-hammer/sales-audit" class="btn-tier-outline">Get Started</a>
       </div>
 
       <!-- Growth (featured) -->
@@ -1540,7 +1540,7 @@
           <div class="tier-item"><span class="tier-item-dash">–</span>AI-generated monthly performance report</div>
         </div>
         <div class="tier-note">Core offer. 3 clients = $7,500/mo. Minimum 2-month engagement.</div>
-        <a href="#your-calendly-link" class="btn-tier-white">Book a Call →</a>
+        <a href="https://calendly.com/sebastian-k-hammer/sales-audit" class="btn-tier-white">Book a Call →</a>
       </div>
 
       <!-- Scale -->
@@ -1559,7 +1559,7 @@
           <div class="tier-item"><span class="tier-item-dash">–</span>Slack access — same-day response</div>
         </div>
         <div class="tier-note">For clients ready to build a team. You become a strategic partner.</div>
-        <a href="#your-calendly-link" class="btn-tier-outline">Book a Call</a>
+        <a href="https://calendly.com/sebastian-k-hammer/sales-audit" class="btn-tier-outline">Book a Call</a>
       </div>
 
     </div>
@@ -2320,7 +2320,7 @@
 
     <div class="resources-callout">
       <p>30 prompts. The full toolkit. Everything a sales manager handles — now available to any business. <strong>The gap between knowing and doing</strong> is where RevPath comes in.</p>
-      <a href="#your-calendly-link" class="btn-outline" style="color:var(--cream); border-color:rgba(255,255,255,0.2); white-space:nowrap; flex-shrink:0;">Book Free Audit</a>
+      <a href="https://calendly.com/sebastian-k-hammer/sales-audit" class="btn-outline" style="color:var(--cream); border-color:rgba(255,255,255,0.2); white-space:nowrap; flex-shrink:0;">Book Free Audit</a>
     </div>
   </div>
 </section>
@@ -2365,7 +2365,7 @@
     <h2 class="title">Book a free 20-minute audit call</h2>
     <p>RevPath will review your current sales process, identify your biggest revenue leak, and hand you a clear action plan — whether we work together or not.</p>
     <div class="final-btns">
-      <a href="#your-calendly-link" class="btn-black">Book Your Free Audit →</a>
+      <a href="https://calendly.com/sebastian-k-hammer/sales-audit" class="btn-black">Book Your Free Audit →</a>
       <a href="#services" class="btn-outline">View Pricing First</a>
     </div>
     <p class="final-micro">No commitment · No pitch · Just a useful 20 minutes</p>
@@ -2392,7 +2392,7 @@
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
       const id = a.getAttribute('href');
-      if (id === '#your-calendly-link') return;
+      if (!id.startsWith('#')) return;
       const el = document.querySelector(id);
       if (el) { e.preventDefault(); el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
     });
