@@ -2387,7 +2387,7 @@
   // TODO: Replace with your Supabase project URL and anon key
   const SUPABASE_URL = 'https://YOUR_PROJECT.supabase.co';
   const SUPABASE_ANON_KEY = 'YOUR_ANON_KEY';
-  const supabase = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
+  const _sb = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
 
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
@@ -2435,14 +2435,14 @@
     btn.disabled = true;
     btn.textContent = 'Submitting...';
 
-    if (!supabase) {
+    if (!_sb) {
       btn.textContent = successText;
       btn.style.background = '#2e7d4f';
       btn.style.color = 'white';
       return;
     }
 
-    const { error } = await supabase.from('waitlist').insert([{ email, name: name || null, source }]);
+    const { error } = await _sb.from('waitlist').insert([{ email, name: name || null, source }]);
 
     if (error) {
       if (error.code === '23505') {
